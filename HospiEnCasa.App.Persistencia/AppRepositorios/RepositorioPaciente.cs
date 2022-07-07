@@ -14,30 +14,60 @@ namespace HospiEnCasa.App.Persistencia
       this.db = db;
     }
 
-    public IEnumerable<Paciente> GetAllPacientes()
+    IEnumerable<Paciente> IRepositorioPaciente.GetAllPacientes()
     {
-      var paciente = db.Pacientes.ToList();
-
-      // if(paciente.Count == 0)
-      // {
-      //   return NotFound();
-      // }
-
-      return paciente;
+      return db.Pacientes;
     }
 
-    public Paciente GetPaciente(int id)
+    Paciente IRepositorioPaciente.GetPaciente(int idPaciente)
     {
-      return db.Pacientes.Where(x => x.Id == id).FirstOrDefault();
+      return db.Pacientes.FirstOrDefault(p => p.Id == idPaciente);
     }
 
-    public Paciente AddPaciente(Paciente paciente)
+    Paciente IRepositorioPaciente.AddPaciente(Paciente paciente)
     {
-      db.Pacientes.Add(paciente);
-      
+      var pacienteNuevo = db.Pacientes.Add(paciente);
+
       db.SaveChanges();
 
-      return paciente;
+      return pacienteNuevo.Entity;
+    }
+
+    Paciente IRepositorioPaciente.UpdatePaciente(Paciente paciente)
+    {
+      var pacienteEncontrado = db.Pacientes.FirstOrDefault(p => p.Id == paciente.Id);
+
+      if (pacienteEncontrado != null)
+      {
+        pacienteEncontrado.Nombre = paciente.Nombre;
+        pacienteEncontrado.Apellidos = paciente.Apellidos;
+        pacienteEncontrado.Telefono = paciente.Telefono;
+        pacienteEncontrado.Genero = paciente.Genero;
+        pacienteEncontrado.Direccion = paciente.Direccion;
+        pacienteEncontrado.Latitud = paciente.Latitud;
+        pacienteEncontrado.Longitud = paciente.Longitud;
+        pacienteEncontrado.Ciudad = paciente.Ciudad;
+        pacienteEncontrado.FechaNacimiento = paciente.FechaNacimiento;
+        pacienteEncontrado.FamiliarDesignado = paciente.FamiliarDesignado;
+        pacienteEncontrado.Enfermera = paciente.Enfermera;
+        pacienteEncontrado.Medico = paciente.Medico;
+        pacienteEncontrado.Historia = paciente.Historia;
+
+        db.SaveChanges();
+      }
+
+      return pacienteEncontrado;
+    }
+
+    void IRepositorioPaciente.DeletePaciente(int idPaciente)
+    {
+      var pacienteEncontrado = db.Pacientes.FirstOrDefault(p => p.Id == idPaciente);
+      if (pacienteEncontrado == null)
+      {
+        return;
+      } 
+      db.Pacientes.Remove(pacienteEncontrado);
+      db.SaveChanges();
     }
   }
 }

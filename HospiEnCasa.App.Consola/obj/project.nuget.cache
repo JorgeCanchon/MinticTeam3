@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ufEif7mk7Gt1y7XvgBJlCkpN743YBGjmdd6xx7TDSSj/c3mPc5natmbjBTpFSjS0/ZXsl/zaOWKNtWxdZb98lQ==",
+  "dgSpecHash": "as93X6WShma6AIb9gPA0NIaMhALs0CBBrd9+0q4Nmn/60Nn92pA571aFCGiSaoH9EmI9x5uPOUcXzOnLWHDC8w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GTK\\Documents\\Projects\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Consola\\HospiEnCasa.App.Consola.csproj",
+  "projectFilePath": "C:\\Users\\GTK\\Documents\\Projects\\MinticTeam3\\HospiEnCasa.App.Consola\\HospiEnCasa.App.Consola.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GTK\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\GTK\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

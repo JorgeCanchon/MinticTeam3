@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GTK\\Documents\\Projects\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj": {}
+    "C:\\Users\\GTK\\Documents\\Projects\\MinticTeam3\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GTK\\Documents\\Projects\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj": {
+    "C:\\Users\\GTK\\Documents\\Projects\\MinticTeam3\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GTK\\Documents\\Projects\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\GTK\\Documents\\Projects\\MinticTeam3\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj",
         "projectName": "HospiEnCasa.App.Dominio",
-        "projectPath": "C:\\Users\\GTK\\Documents\\Projects\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj",
+        "projectPath": "C:\\Users\\GTK\\Documents\\Projects\\MinticTeam3\\HospiEnCasa.App.Dominio\\HospiEnCasa.App.Dominio.csproj",
         "packagesPath": "C:\\Users\\GTK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GTK\\Documents\\Projects\\Hospitalizacion\\HospiEnCasa.App\\HospiEnCasa.App.Dominio\\obj\\",
+        "outputPath": "C:\\Users\\GTK\\Documents\\Projects\\MinticTeam3\\HospiEnCasa.App.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\GTK\\AppData\\Roaming\\NuGet\\NuGet.Config",

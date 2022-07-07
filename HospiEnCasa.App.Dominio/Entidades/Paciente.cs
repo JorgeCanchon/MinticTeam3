@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 namespace HospiEnCasa.App.Dominio
 {
   public class Paciente:Persona

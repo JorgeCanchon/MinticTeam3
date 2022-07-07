@@ -34,6 +34,9 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Genero")
+                        .HasColumnType("int");
+
                     b.Property<int>("HorasLaborales")
                         .HasColumnType("int");
 
@@ -48,9 +51,6 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("genero")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -73,6 +73,9 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Genero")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -84,9 +87,6 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("genero")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -134,6 +134,9 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Genero")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -145,9 +148,6 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("genero")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -183,6 +183,9 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Genero")
+                        .HasColumnType("int");
+
                     b.Property<int>("HistoriaId")
                         .HasColumnType("int");
 
@@ -202,9 +205,6 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("genero")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
