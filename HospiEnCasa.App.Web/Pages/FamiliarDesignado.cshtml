@@ -1,0 +1,69 @@
+@page
+@model FamiliarDesignadoModel
+@{
+    ViewData["Title"] = "Asignar familiar";
+}
+
+<h1>Asignar familiar</h1>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="paciente" class="col-sm-2 control-label">Paciente</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="paciente">
+                @foreach (var item in @Model.Pacientes)
+                {
+                    <option value="@item.Id">@item.Nombre @item.Apellidos</option>  
+                }            
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="telefono" placeholder="Teléfono">
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="genero" class="col-sm-2 control-label">Genero</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="genero">
+                @foreach (var item in @Model.Genero)
+                {
+                    <option value="@item.Key">@item.Value</option>  
+                }          
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="correo" class="col-sm-2 control-label">Correo</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="correo" placeholder="Correo">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="parentesco" class="col-sm-2 control-label">Parentesco</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="parentesco" placeholder="Parentesco">
+        </div>
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Asignar</button>
+        </div>
+    </div>
+</form>
