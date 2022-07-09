@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using HospiEnCasa.App.Dominio;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using HospiEnCasa.App.Persistencia;
 
@@ -27,21 +28,8 @@ public class FamiliarDesignadoModel : PageModel
 
     private void SetPacientes()
     {
-        Paciente paciente = new Paciente() {
-            Id = 1,
-            Nombre = "Jorge Luis",
-            Apellidos = "Canchon Espinosa"
-        };
-
-        Pacientes.Add(paciente);
-
-        Paciente paciente1 = new Paciente() {
-            Id = 1,
-            Nombre = "Diego Fernando",
-            Apellidos = "Canchon Espinosa"
-        };
-
-        Pacientes.Add(paciente1);
+        var pacientes = _repoPaciente.GetAllPacientes().ToList();
+        Pacientes.AddRange(pacientes);
     }
 
 
