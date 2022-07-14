@@ -1,0 +1,56 @@
+@page "/FormularioRegistroFamiliarDesignado"
+@model HospiEnCasa.App.Web.Pages.FormularioRegistroFamiliarDesignadoModel
+@{
+}
+<div class="container">
+    <div class="title">Registro de Familiar</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nombre</span>
+            <input type="text" placeholder="Ingrese su nombre" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Apellidos</span>
+            <input type="text" placeholder="Ingrese sus apellidos" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Telefono</span>
+            <input type="text" placeholder="Ingrese su telefono" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Parentesco</span>
+            <input type="text" placeholder="Ingrese su especialidad" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Correo</span>
+            <input type="email" placeholder="Ingrese su email" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title">Genero</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Masculino</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Femenino</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefiero no decirlo</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Registrar">
+        </div>
+      </form>
+    </div>
+  </div>
