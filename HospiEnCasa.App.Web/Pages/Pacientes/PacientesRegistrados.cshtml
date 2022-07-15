@@ -5,29 +5,14 @@
 <h1 class="title">Pacientes</h1>
 
 <div class="container">
-
+@foreach(var paciente in Model.Pacientes)
+{
   <div class="card">
     <img src="~/lib/Images/Paciente.png" />
-    <h4>Pedro Gutierrez</h4>
-    <p>Cel: 300 214 2123</p>
-    <p>Masculino</p>
+    <h4>@paciente.Nombre @paciente.Apellidos</h4>
+    <p>Cel: @paciente.Telefono</p>
+    <p>@paciente.Genero</p>
     <a href="#">Leer más</a>
   </div>
-
-  <div class="card">
-    <img src="~/lib/Images/Paciente.png">
-    <h4>Andrea Sanchez</h4>
-    <p>Cel: 305 312 8893</p>
-    <p>Femenino</p>
-    <a href="#">Leer más</a>
-  </div>
-
-  <div class="card">
-    <img src="~/lib/Images/Paciente.png">
-    <h4>Paola Garcia</h4>
-    <p>Cel: 300 214 5532</p>
-    <p>Femenino</p>
-    <a href="#">Leer más</a>
-  </div>
-
+}
 </div>
