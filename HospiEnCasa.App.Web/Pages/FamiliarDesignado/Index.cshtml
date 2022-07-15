@@ -1,0 +1,45 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.FamiliarDesignado.IndexModel
+@{
+}
+
+
+
+<div class="button">
+    <a asp-page="./FormularioRegistroFamiliarDesignado/Add">Registrar nuevo familiar</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Género</th>
+            <th>Parentesco</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var familiar in Model.FamiliaresDesignados)
+        {
+            <tr>
+                <td>@familiar.Nombre</td>
+                <td>@familiar.Apellidos</td>
+                <td>@familiar.Correo</td>
+                <td>@familiar.Telefono</td>
+                <td>@familiar.Genero</td>
+                <td>@familiar.Parentesco</td>
+                <td>
+                    <a class="btn btn-warning table-btn" asp-page="./FormularioRegistroFamiliarDesignado/Edit" asp-route-id="@familiar.Id">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-danger table-btn" asp-page="./FormularioRegistroFamiliarDesignado/Delete" asp-route-id="@familiar.Id">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

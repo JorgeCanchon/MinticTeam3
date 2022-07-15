@@ -1,0 +1,62 @@
+@page
+@model HospiEnCasa.App.Web.Pages.AddModel
+@{
+}
+<div class="container">
+  <div class="title">Registro de Familiar</div>
+  <div class="content">
+    <div class="row">
+        <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" for="nombre">Nombre</span>
+          <input type="text" id="nombre" placeholder="Ingrese su nombre" asp-for="FamiliarDesignado.Nombre" required />
+        </div>
+        <div class="input-box">
+          <span class="details" for="apellidos">Apellidos</span>
+          <input type="text" id="apellidos" asp-for="FamiliarDesignado.Apellidos" placeholder="Ingrese sus apellidos"
+            required>
+        </div>
+        <div class="input-box">
+          <span class="details" for="telefono">Telefono</span>
+          <input type="text" id="telefono" asp-for="FamiliarDesignado.Telefono" placeholder="Ingrese su telefono"
+            required>
+        </div>
+        <div class="input-box">
+          <span class="details" for="parentesco">Parentesco</span>
+          <input type="text" id="parentesco" asp-for="FamiliarDesignado.Parentesco"
+            placeholder="Ingrese su especialidad" required>
+        </div>
+        <div class="input-box">
+          <span class="details" for="correo">Correo</span>
+          <input type="email" id="correo" asp-for="FamiliarDesignado.Correo" placeholder="Ingrese su email" required>
+        </div>
+      </div>
+      <div class="gender-details">
+        <input type="radio" asp-for="FamiliarDesignado.Genero" name="gender" id="dot-1" value="0">
+        <input type="radio" asp-for="FamiliarDesignado.Genero" name="gender" id="dot-2" value="1">
+        <input type="radio" asp-for="FamiliarDesignado.Genero" name="gender" id="dot-3" value="2">
+        <span class="gender-title">Genero</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Masculino</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Femenino</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefiero no decirlo</span>
+          </label>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Registrar">
+      </div>
+    </form>
+  </div>
+</div>
