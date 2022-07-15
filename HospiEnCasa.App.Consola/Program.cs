@@ -1,7 +1,6 @@
 ﻿using System;
 using HospiEnCasa.App.Dominio;
 using HospiEnCasa.App.Persistencia;
-using HospiEnCasa.App.Persistencia.AppRepositorios;
 
 namespace HospiEnCasa.App.Consola
 {
