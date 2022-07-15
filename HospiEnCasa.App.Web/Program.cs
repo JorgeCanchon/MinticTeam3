@@ -4,7 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-// builder.Services.AddSingleton<IRepositorioPaciente, RepositorioPaciente>();
+builder.Services.AddDbContext<HospiEnCasa.App.Persistencia.AppContext>();
+builder.Services.AddScoped<IRepositorioPaciente, RepositorioPaciente>();
 
 var app = builder.Build();
 

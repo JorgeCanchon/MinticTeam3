@@ -7,15 +7,15 @@ namespace HospiEnCasa.App.Web.Pages
 {
     public class PacientesRegistradosModel : PageModel
     {
-        // private readonly IRepositorioPaciente repositorioPaciente;
-        // public IEnumerable<Paciente> Pacientes {get;set;}
-        /*public PacientesRegistradosModel(IRepositorioPaciente repositorioPaciente)
+        private readonly IRepositorioPaciente _repositorioPaciente;
+        public IEnumerable<Paciente> Pacientes {get;set;}
+        public PacientesRegistradosModel(IRepositorioPaciente repositorioPaciente)
         {
-            this.repositorioPaciente = repositorioPaciente;
-        }*/
+            _repositorioPaciente = repositorioPaciente;
+        }
         public void OnGet()
         {
-            // Pacientes = repositorioPaciente.GetAllPacientes();
+            Pacientes = _repositorioPaciente.GetAllPacientes();
         }
     }
 }
