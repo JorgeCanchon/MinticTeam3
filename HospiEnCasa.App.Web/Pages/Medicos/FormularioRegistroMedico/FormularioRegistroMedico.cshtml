@@ -2,6 +2,7 @@
 @model HospiEnCasa.App.Web.Pages.FormularioRegistroMedicoModel
 @{
 }
+<link href="@Url.Content("~/Pages/Medicos/FormularioRegistroMedico/FormularioRegistroMedico.cshtml.css")" rel="stylesheet" type="text/css">
 <div class="container">
     <div class="title">Registro de Medico</div>
     <div class="content">
@@ -9,33 +10,33 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nombre</span>
-            <input type="text" placeholder="Ingrese su nombre" required>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre" asp-for="Medico.Nombre" required>
           </div>
           <div class="input-box">
             <span class="details">Apellidos</span>
-            <input type="text" placeholder="Ingrese sus apellidos" required>
+            <input type="text" id="apellidos" placeholder="Ingrese sus apellidos" asp-for="Medico.Apellidos" required>
           </div>
           <div class="input-box">
             <span class="details">Telefono</span>
-            <input type="text" placeholder="Ingrese su telefono" required>
+            <input type="text" id="telefono" placeholder="Ingrese su telefono" asp-for="Medico.Telefono" required>
           </div>
           <div class="input-box">
             <span class="details">Especialidad</span>
-            <input type="text" placeholder="Ingrese su especialidad" required>
+            <input type="text" id="especialidad" placeholder="Ingrese su especialidad" asp-for="Medico.Especialidad" required>
           </div>
           <div class="input-box">
             <span class="details">Codigo</span>
-            <input type="text" placeholder="Ingrese su codigo" required>
+            <input type="text" id="codigo" placeholder="Ingrese su codigo" asp-for="Medico.Codigo" required>
           </div>
           <div class="input-box">
             <span class="details">Registro Rethus</span>
-            <input type="text" placeholder="Ingrese su registro rethus" required>
+            <input type="text" id="registroRethus" placeholder="Ingrese su registro rethus" asp-for="Medico.RegistroRethus" required>
           </div>
         </div>
         <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
+          <input type="radio" asp.for="Medico.Genero" name="gender" id="dot-1" value="0">
+          <input type="radio" asp-for="Medico.Genero" name="gender" id="dot-2" value="1">
+          <input type="radio" asp.for="Medico.Genero" name="gender" id="dot-3" value="2">
           <span class="gender-title">Genero</span>
           <div class="category">
             <label for="dot-1">
