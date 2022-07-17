@@ -2,19 +2,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using HospiEnCasa.App.Persistencia;
 using HospiEnCasa.App.Dominio;
+using System;
 
 namespace HospiEnCasa.App.Web.Pages
 {
-    [BindProperties]
-    public class FormularioRegistroMedicoModel : PageModel
+    public class AddMedicoModel : PageModel
     {
        private readonly IRepositorioMedico _repositorioMedico;
-
+       [BindProperty]
         public Dominio.Medico Medico { get; set; }
 
         public string ErrorMessage { get; set; }
 
-        public FormularioRegistroMedicoModel(IRepositorioMedico repositorioMedico)
+        public AddMedicoModel(IRepositorioMedico repositorioMedico)
         {
             _repositorioMedico = repositorioMedico ?? throw new ArgumentNullException(nameof(repositorioMedico));
         }
@@ -30,9 +30,9 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 if(ModelState.IsValid)
                 {
-                    var medico = _repositorioMedico.AddMedico(Medico);
+                    var medico = _repositorioMedico.Create(Medico);
                     if(medico.Id > 0);
-                        return RedirectToPage("/Index");
+                        return RedirectToPage("/Medicos/Index");
                     ErrorMessage = "No se pudo agregar medico";
                 }
 

@@ -6,7 +6,7 @@ using System;
 
 namespace HospiEnCasa.App.Web.Pages
 {
-    public class AddModel : PageModel
+    public class AddFamiliarDesignadoModel : PageModel
     {
         private readonly IRepositorioFamiliarDesignado _repositorioFamiliarDesignado;
 
@@ -15,7 +15,7 @@ namespace HospiEnCasa.App.Web.Pages
 
         public string ErrorMessage { get; set; }
 
-        public AddModel(IRepositorioFamiliarDesignado repositorioFamiliarDesignado)
+        public AddFamiliarDesignadoModel(IRepositorioFamiliarDesignado repositorioFamiliarDesignado)
         {
             _repositorioFamiliarDesignado = repositorioFamiliarDesignado ?? throw new ArgumentNullException(nameof(repositorioFamiliarDesignado));
         }
@@ -43,7 +43,6 @@ namespace HospiEnCasa.App.Web.Pages
                 ErrorMessage = "Error " + exception.Message;
             }
 
-        
            return Page();
         }
     }

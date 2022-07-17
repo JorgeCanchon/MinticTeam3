@@ -1,0 +1,25 @@
+@page
+@model HospiEnCasa.App.Web.Pages.Medicos.IndexModel
+@{
+}
+<h1 class="title">Medicos</h1>
+
+<div class="button">
+    <a asp-page="./RegistrarMedico/AddMedico">Registrar nuevo medico</a>
+</div>
+
+<div class="container">
+@foreach(var medico in Model.Medicos)
+{
+  <div class="card">
+    <img src="~/lib/Images/Medico.png" />
+    <h4>@medico.Nombre @medico.Apellidos</h4>
+    <p>Cel: @medico.Telefono</p>
+    <p>@medico.Genero</p>
+    <p>@medico.Especialidad</p>
+    <span>
+      <a class="hyperspan" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 1;" asp-page="./ObtenerMedico/ObtenerMedico" asp-route-id="@medico.Id"></a>
+    </span>
+  </div>
+}
+</div>

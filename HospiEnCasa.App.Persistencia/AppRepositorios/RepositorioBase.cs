@@ -33,9 +33,10 @@ namespace HospiEnCasa.App.Persistencia
         public IQueryable<T> FindAll() =>
             Context.Set<T>().AsNoTracking();
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) =>
-            Context.Set<T>().Where(expression).AsNoTracking();
-
+        // public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) =>
+            // Context.Set<T>().Where(expression).AsNoTracking();
+        public T FindByCondition(int id) =>
+            Context.Set<T>().Find(id);
         public bool Update(T entity, string propertyName)
         {
             Context.Entry<T>(entity).Property(propertyName).IsModified = false;

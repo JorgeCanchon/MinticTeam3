@@ -6,20 +6,21 @@ using System;
 
 namespace HospiEnCasa.App.Web.Pages
 {
-    public class DeleteModel : PageModel
+    public class DeleteFamiliarDesignadoModel : PageModel
     {
         private readonly IRepositorioFamiliarDesignado _repositorioFamiliarDesignado;
         public string ErrorMessage { get; set; }
         public Dominio.FamiliarDesignado Familiar { get; set; } 
 
-        public DeleteModel(IRepositorioFamiliarDesignado repositorioFamiliarDesignado)
+        public DeleteFamiliarDesignadoModel(IRepositorioFamiliarDesignado repositorioFamiliarDesignado)
         {
             _repositorioFamiliarDesignado = repositorioFamiliarDesignado ?? throw new ArgumentNullException(nameof(repositorioFamiliarDesignado));
         }
 
         public void OnGet(int id)
         {
-            Familiar = _repositorioFamiliarDesignado.FindByCondition(x => x.Id == id).FirstOrDefault();
+            
+            Familiar = _repositorioFamiliarDesignado.FindByCondition(id);
         }
 
         public ActionResult OnPost(int id)

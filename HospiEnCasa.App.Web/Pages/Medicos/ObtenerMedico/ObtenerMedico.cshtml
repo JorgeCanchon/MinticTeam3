@@ -1,0 +1,15 @@
+@page "{id:int}"
+@model HospiEnCasa.App.Web.Pages.ObtenerMedicoModel
+@{
+}
+<h1 class="title">Medico</h1>
+
+<div class="container">
+  <div class="card">
+    <img src="~/lib/Images/Medico.png" />
+    <h4>@Model.Medico.Nombre @Model.Medico.Apellidos</h4>
+    <p>Cel: @Model.Medico.Telefono</p>
+    <p>@Model.Medico.Genero</p>
+    <p>@Model.Medico.Especialidad</p>
+  </div>
+</div>
