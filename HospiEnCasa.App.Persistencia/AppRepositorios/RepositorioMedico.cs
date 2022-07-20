@@ -6,9 +6,9 @@ using HospiEnCasa.App.Dominio;
 
 namespace HospiEnCasa.App.Persistencia
 {
-  public class RepositorioMedico : RepositorioBase<Medico>, IRepositorioMedico
-  {
-    public RepositorioMedico(AppContext db) : base(db)
-    {}
-  }
+    public class RepositorioMedico : RepositorioBase<Medico>, IRepositorioMedico
+    {
+        public RepositorioMedico(AppContext db) : base(db)
+        { }
+    }
 }

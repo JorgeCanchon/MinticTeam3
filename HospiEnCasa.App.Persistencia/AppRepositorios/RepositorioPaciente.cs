@@ -8,7 +8,7 @@ namespace HospiEnCasa.App.Persistencia
 {
     public class RepositorioPaciente : RepositorioBase<Paciente>, IRepositorioPaciente
     {
-       public RepositorioPaciente(AppContext db) : base(db)
-       {}
+        public RepositorioPaciente(AppContext db) : base(db)
+        { }
     }
 }

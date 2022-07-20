@@ -16,7 +16,7 @@ namespace HospiEnCasa.App.Web.Pages
         }
         public void OnGet(int id)
         {
-          Medico = _repositorioMedico.FindByCondition(id);
+          Medico = _repositorioMedico.FindById(id);
         }
 
         public ActionResult OnPost()

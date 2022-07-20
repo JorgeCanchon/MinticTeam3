@@ -3,7 +3,7 @@
 @{
 }
 <div class="button">
-    <a asp-page="./RegistrarFamiliarDesignado/AddFamiliarDesignado">Registrar nuevo familiar</a>
+    <a asp-page="./AgregarActualizarFamiliarDesignado/AddUpdateFamiliarDesignado">Registrar nuevo familiar</a>
 </div>
 
 <table class="table">
@@ -29,7 +29,7 @@
                 <td>@familiar.Genero</td>
                 <td>@familiar.Parentesco</td>
                 <td>
-                    <a class="btn btn-warning table-btn" asp-page="./ActualizarFamiliarDesignado/UpdateFamiliarDesignado" asp-route-id="@familiar.Id">
+                    <a class="btn btn-warning table-btn" asp-page="./AgregarActualizarFamiliarDesignado/AddUpdateFamiliarDesignado" asp-route-id="@familiar.Id">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
                     <a class="btn btn-danger table-btn" asp-page="./BorrarFamiliarDesignado/DeleteFamiliarDesignado" asp-route-id="@familiar.Id">

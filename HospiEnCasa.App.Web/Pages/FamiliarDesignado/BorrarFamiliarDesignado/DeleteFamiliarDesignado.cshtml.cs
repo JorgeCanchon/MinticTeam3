@@ -20,7 +20,7 @@ namespace HospiEnCasa.App.Web.Pages
         public void OnGet(int id)
         {
             
-            Familiar = _repositorioFamiliarDesignado.FindByCondition(id);
+            Familiar = _repositorioFamiliarDesignado.FindById(id);
         }
 
         public ActionResult OnPost(int id)
@@ -29,6 +29,7 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 if(id > 0)
                 {
+                    Familiar = _repositorioFamiliarDesignado.FindById(id);
                     if(Familiar != null){
                         var entity = _repositorioFamiliarDesignado.Delete(Familiar);
                         if(entity);
