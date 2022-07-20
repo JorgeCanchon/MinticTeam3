@@ -5,7 +5,6 @@ namespace HospiEnCasa.App.Persistencia
 {
     public class AppContext : DbContext
     {
-        //public DbSet<Persona> Personas { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<FamiliarDesignado> FamiliaresDesignados { get; set; }
