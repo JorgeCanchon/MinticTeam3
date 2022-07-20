@@ -1,0 +1,66 @@
+@page
+@model HospiEnCasa.App.Web.Pages.AddMedicoModel
+@{
+}
+<div class="container">
+  <div class="title">Registro de Medico</div>
+  <div class="content">
+    <div class="row">
+        <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" for="nombre">Nombre</span>
+          <input type="text" id="nombre" asp-for="Medico.Nombre" placeholder="Ingrese su nombre" required />
+        </div>
+        <div class="input-box">
+          <span class="details" for="apellidos">Apellidos</span>
+          <input type="text" id="apellidos" asp-for="Medico.Apellidos" placeholder="Ingrese sus apellidos"
+            required>
+        </div>
+        <div class="input-box">
+          <span class="details" for="telefono">Telefono</span>
+          <input type="text" id="telefono" asp-for="Medico.Telefono" placeholder="Ingrese su telefono"
+            required>
+        </div>
+        <div class="input-box">
+          <span class="details" for="especialidad">Especialidad</span>
+          <input type="text" id="especialidad" asp-for="Medico.Especialidad"
+            placeholder="Ingrese su especialidad" required>
+        </div>
+        <div class="input-box">
+          <span class="details" for="codigo">Codigo</span>
+          <input type="text" id="codigo" asp-for="Medico.Codigo" placeholder="Ingrese su codigo" required>
+        </div>
+        <div class="input-box">
+          <span class="details" for="registroRethus">Registro Rethus</span>
+          <input type="text" id="registroRethus" asp-for="Medico.RegistroRethus" placeholder="Ingrese su registro rethus" required>
+        </div>
+      </div>
+      <div class="gender-details">
+        <input type="radio" asp-for="Medico.Genero" name="gender" id="dot-1" value="0">
+        <input type="radio" asp-for="Medico.Genero" name="gender" id="dot-2" value="1">
+        <input type="radio" asp-for="Medico.Genero" name="gender" id="dot-3" value="2">
+        <span class="gender-title">Genero</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Masculino</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Femenino</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefiero no decirlo</span>
+          </label>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Registrar">
+      </div>
+    </form>
+  </div>
+</div>

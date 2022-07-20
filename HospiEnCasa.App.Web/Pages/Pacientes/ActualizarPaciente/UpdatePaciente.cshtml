@@ -1,0 +1,71 @@
+@page
+@model HospiEnCasa.App.Web.Pages.UpdatePacienteModel
+@{
+}
+<div class="container">
+    <div class="title">Actualizacion de Paciente</div>
+    <div class="content">
+      <div class="row">
+        <p class="text-danger">@Model.ErrorMessage</p>
+      </div>
+      <form action="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nombre</span>
+            <input type="text" id="nombre" asp-for="Paciente.Nombre" placeholder="Ingrese su nombre" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Apellidos</span>
+            <input type="text" id="apellidos" asp-for="Paciente.Apellidos" placeholder="Ingrese sus apellidos" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Telefono</span>
+            <input type="text" id="telefono" asp-for="Paciente.Telefono" placeholder="Ingrese su telefono" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Enfermera</span>
+            <input type="text" id="enfermera" asp-for="Paciente.Enfermera" placeholder="Ingrese la enfermera encargada" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Medico</span>
+            <input type="text" id="medico" asp-for="Paciente.Medico" placeholder="Ingrese el medico encargado" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Direccion</span>
+            <input type="text" id="direccion" asp-for="Paciente.Direccion" placeholder="Ingrese su direccion" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Ciudad</span>
+            <input type="text" id="ciudad" asp-for="Paciente.Ciudad" placeholder="Ingrese su ciudad de residencia" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Fecha de nacimiento</span>
+            <input type="text" id="fechaNacimiento" asp-for="Paciente.FechaNacimiento" placeholder="Ingrese su fecha de nacimiento" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" asp-for="Paciente.Genero" name="gender" id="dot-1" value="0">
+          <input type="radio" asp-for="Paciente.Genero" name="gender" id="dot-2" value="1">
+          <input type="radio"asp-for="Paciente.Genero" name="gender" id="dot-3" value="2">
+          <span class="gender-title">Genero</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Masculino</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Femenino</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefiero no decirlo</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Registrar">
+        </div>
+      </form>
+    </div>
+  </div>
