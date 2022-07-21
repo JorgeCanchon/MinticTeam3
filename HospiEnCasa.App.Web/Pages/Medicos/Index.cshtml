@@ -2,11 +2,11 @@
 @model HospiEnCasa.App.Web.Pages.Medicos.IndexModel
 @{
 }
-<h1 class="title">Medicos</h1>
 
-<div class="button">
-    <a asp-page="./RegistrarMedico/AddMedico">Registrar nuevo medico</a>
+<div class="d-flex flex-column align-items-end">
+    <a class="btn btn-outline-primary" asp-page="./RegistrarMedico/AddMedico">Registrar nuevo medico</a>
 </div>
+<h1 class="title">Medicos</h1>
 
 <div class="container">
 @foreach(var medico in Model.Medicos)
