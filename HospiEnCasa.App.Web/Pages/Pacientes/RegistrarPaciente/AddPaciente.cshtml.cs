@@ -9,14 +9,20 @@ namespace HospiEnCasa.App.Web.Pages
     public class AddPacienteModel : PageModel
     {
         private readonly IRepositorioPaciente _repositorioPaciente;
+        private readonly IRepositorioMedico _repositorioMedico;
+       [BindProperty]
         public Dominio.Paciente Paciente {get;set;}
+       [BindProperty]
+        public IEnumerable<Dominio.Medico> Medicos {get;set;}
         public string ErrorMessage {get;set;}
-        public AddPacienteModel(IRepositorioPaciente repositorioPaciente)
+        public AddPacienteModel(IRepositorioPaciente repositorioPaciente, IRepositorioMedico repositorioMedico)
         {
             _repositorioPaciente = repositorioPaciente ?? throw new ArgumentNullException(nameof(repositorioPaciente));
+            _repositorioMedico = repositorioMedico ?? throw new ArgumentNullException(nameof(repositorioMedico));
         }
         public void OnGet()
         {
+            Medicos = _repositorioMedico.FindAll().ToList();
         }
 
         public ActionResult OnPost()
@@ -30,7 +36,7 @@ namespace HospiEnCasa.App.Web.Pages
                     {
                         return RedirectToPage("/Pacientes/Index");
                     }
-                    ErrorMessage = "No se pudo agregar paciente";
+                    ErrorMessage = "No se pudo agregar el paciente";
                 }
 
                 ErrorMessage = "Modelo invalido por favor intente de nuevo";

@@ -37,12 +37,12 @@ namespace HospiEnCasa.App.Persistencia
             Context.Set<T>().Where(expression).AsNoTracking();
         public T FindById(int id) =>
             Context.Set<T>().Find(id);
-        public bool Update(T entity, string propertyName)
+            
+        public T Update(T entity)
         {
-            Context.Entry<T>(entity).Property(propertyName).IsModified = false;
-            var result = Context.Set<T>().Update(entity).State;
+            Context.Attach(entity).State = EntityState.Modified;
             Context.SaveChanges();
-            return result == EntityState.Modified;
+            return entity;
         }
     }
 }
