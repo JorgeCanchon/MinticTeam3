@@ -2,11 +2,11 @@
 @model HospiEnCasa.App.Web.Pages.FamiliarDesignado.IndexModel
 @{
 }
-<div class="button">
-    <a asp-page="./AgregarActualizarFamiliarDesignado/AddUpdateFamiliarDesignado">Registrar nuevo familiar</a>
+<div>
+    <a class="btn btn-outline-primary" asp-page="./AgregarActualizarFamiliarDesignado/AddUpdateFamiliarDesignado">Registrar nuevo familiar</a>
 </div>
-
-<table class="table">
+</br>
+<table class="table display" id="tableFamiliar">
     <thead>
         <tr>
             <th>Nombre</th>
