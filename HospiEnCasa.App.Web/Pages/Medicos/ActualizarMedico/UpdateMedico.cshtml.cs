@@ -6,7 +6,7 @@ using System;
 
 namespace HospiEnCasa.App.Web.Pages
 {
-    public class AddMedicoModel : PageModel
+    public class UpdateMedicoModel : PageModel
     {
        private readonly IRepositorioMedico _repositorioMedico;
        [BindProperty]
@@ -14,14 +14,26 @@ namespace HospiEnCasa.App.Web.Pages
 
         public string ErrorMessage { get; set; }
 
-        public AddMedicoModel(IRepositorioMedico repositorioMedico)
+        public UpdateMedicoModel(IRepositorioMedico repositorioMedico)
         {
             _repositorioMedico = repositorioMedico ?? throw new ArgumentNullException(nameof(repositorioMedico));
         }
 
-        public void OnGet()
+        public ActionResult OnGet(int id)
         {
-            
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            Medico = _repositorioMedico.FindById(id);
+
+            if(Medico == null)
+            {
+                return NotFound();
+            }
+
+            return Page();
         }
 
         public ActionResult OnPost()
@@ -30,10 +42,10 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 if(ModelState.IsValid)
                 {
-                    var medico = _repositorioMedico.Create(Medico);
+                    var medico = _repositorioMedico.Update(Medico);
                     if(medico.Id > 0);
                         return RedirectToPage("/Medicos/Index");
-                    ErrorMessage = "No se pudo agregar el medico";
+                    ErrorMessage = "No se pudo actualizar el medico";
                 }
 
                 ErrorMessage = "Modelo invalido por favor intente de nuevo";
