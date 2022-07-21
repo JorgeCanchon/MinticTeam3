@@ -19,7 +19,7 @@ namespace HospiEnCasa.App.Web.Pages
             _repositorioPaciente = repositorioPaciente;
         }
 
-        public void OnGet(int medicoId)
+        public void OnGet(int id)
         {
             PacientesAsignados = _repositorioPaciente.FindByCondition(p => p.Medico.Id == id);
         }
