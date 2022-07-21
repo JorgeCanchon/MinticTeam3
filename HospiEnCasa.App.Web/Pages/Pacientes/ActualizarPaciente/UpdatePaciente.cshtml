@@ -10,6 +10,7 @@
       </div>
       <form action="post">
         <div class="user-details">
+          <input type="hidden" asp-for="Paciente.Id" />
           <div class="input-box">
             <span class="details">Nombre</span>
             <input type="text" id="nombre" asp-for="Paciente.Nombre" placeholder="Ingrese su nombre" required>
@@ -64,7 +65,7 @@
           </div>
         </div>
         <div class="button">
-          <input type="submit" value="Registrar">
+          <input type="submit" value="Actualizar">
         </div>
       </form>
     </div>

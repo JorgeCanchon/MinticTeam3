@@ -28,7 +28,12 @@
           </div>
           <div class="input-box">
             <span class="details">Medico</span>
-            <input type="text" id="medico" asp-for="Paciente.Medico" placeholder="Ingrese el medico encargado" required>
+            <select id="medico">
+              @foreach(var medico in Model.Medicos)
+              {
+                <option value="@medico">@medico.Nombre</option>
+              }
+            </select>
           </div>
           <div class="input-box">
             <span class="details">Direccion</span>

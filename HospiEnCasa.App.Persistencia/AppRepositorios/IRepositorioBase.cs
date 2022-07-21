@@ -10,10 +10,11 @@ namespace HospiEnCasa.App.Persistencia
     public interface IRepositorioBase<T>
     {
         IQueryable<T> FindAll();
-        // IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
-        T FindByCondition(int id);
+        T FindById(int id);
+        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
         T Create(T entity);
-        bool Update(T entity, string propertyName);
+        // bool Update(T entity, string propertyName);
+        T Update(T entity);
         bool Delete(T entity);
     }
 }

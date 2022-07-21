@@ -20,7 +20,7 @@ namespace HospiEnCasa.App.Web.Pages
         public void OnGet(int id)
         {
             
-            Familiar = _repositorioFamiliarDesignado.FindByCondition(id);
+            Familiar = _repositorioFamiliarDesignado.FindById(id);
         }
 
         public ActionResult OnPost(int id)

@@ -20,7 +20,7 @@ namespace HospiEnCasa.App.Web.Pages.Pacientes
         public void OnGet(int id)
         {
             
-            Paciente = _repositorioPaciente.FindByCondition(id);
+            Paciente = _repositorioPaciente.FindById(id);
         }
 
         public ActionResult OnPost(int id)
