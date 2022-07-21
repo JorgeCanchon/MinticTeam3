@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.title{
+  text-align: center;
+  font-size: 40px;
+  color: #6a6a6a;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
+}

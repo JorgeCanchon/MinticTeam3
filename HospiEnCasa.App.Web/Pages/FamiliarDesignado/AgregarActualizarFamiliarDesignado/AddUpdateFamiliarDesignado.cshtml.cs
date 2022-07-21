@@ -44,8 +44,8 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 function = () =>
                 {
-                    var isFamiliarUpdate = _repositorioFamiliarDesignado.Update(FamiliarDesignado, "Id");
-                    if (isFamiliarUpdate) 
+                    var familiar = _repositorioFamiliarDesignado.Update(FamiliarDesignado);
+                    if (familiar.Id > 0) 
                         return RedirectToPage("/FamiliarDesignado/Index");
 
                     ErrorMessage = "No se pudo actualizar el familiar";
