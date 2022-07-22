@@ -10,7 +10,7 @@
     <h4>@Model.Paciente.Nombre @Model.Paciente.Apellidos</h4>
     <p>Cel: @Model.Paciente.Telefono</p>
     <p>@Model.Paciente.Genero</p>
-    @* <a asp-page="./Edit" asp-route-id="@Model.Paciente.Id">Editar</a> *@
-    <a asp-page="./BorrarPaciente/DeletePaciente" asp-route-id="@Model.Paciente.Id">Eliminar</a>
+    <a asp-page="../ActualizarPaciente/UpdatePaciente" asp-route-id="@Model.Paciente.Id">Editar</a>
+    @* <a asp-page="./BorrarPaciente/DeletePaciente" asp-route-id="@Model.Paciente.Id">Eliminar</a> *@
   </div>
 </div>

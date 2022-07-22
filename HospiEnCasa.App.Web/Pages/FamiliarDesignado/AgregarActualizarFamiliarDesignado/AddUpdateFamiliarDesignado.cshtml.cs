@@ -22,6 +22,7 @@ namespace HospiEnCasa.App.Web.Pages
 
         public IActionResult OnGet(int? id)
         {
+            ViewData["TitlePage"] = "Registrar familiar designado";
             if (id.HasValue)
             {
                 FamiliarDesignado = _repositorioFamiliarDesignado.FindById(id.Value);
@@ -30,6 +31,7 @@ namespace HospiEnCasa.App.Web.Pages
                 {
                     return RedirectToPage("/FamiliarDesignado/Index");
                 }
+                ViewData["TitlePage"] = "Actualizar familiar designado";
             }
             return Page();
         }
@@ -42,8 +44,8 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 function = () =>
                 {
-                    var isFamiliarUpdate = _repositorioFamiliarDesignado.Update(FamiliarDesignado, "Id");
-                    if (isFamiliarUpdate) 
+                    var familiar = _repositorioFamiliarDesignado.Update(FamiliarDesignado);
+                    if (familiar.Id > 0) 
                         return RedirectToPage("/FamiliarDesignado/Index");
 
                     ErrorMessage = "No se pudo actualizar el familiar";

@@ -1,0 +1,42 @@
+@page "{id:int}"
+@model HospiEnCasa.App.Web.Pages.PacientesAsignadosModel
+@{
+}
+@* <div class="button">
+    <a asp-page="./RegistrarFamiliarDesignado/AddFamiliarDesignado">Registrar nuevo familiar</a>
+</div> *@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Teléfono</th>
+            <th>Género</th>
+            <th>Familiar</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var paciente in Model.PacientesAsignados)
+        {
+            <tr>
+                <td>@paciente.Nombre</td>
+                <td>@paciente.Apellidos</td>
+                @* <td>@paciente.Correo</td> *@
+                <td>@paciente.Telefono</td>
+                <td>@paciente.Genero</td>
+                <td>@paciente.FamiliarDesignado</td>
+                @* <td>@paciente.Parentesco</td> *@
+                @* <td>
+                    <a class="btn btn-warning table-btn" asp-page="../ActualizarFamiliarDesignado/UpdateFamiliarDesignado" asp-route-id="@familiar.Id">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-danger table-btn" asp-page="./BorrarFamiliarDesignado/DeleteFamiliarDesignado" asp-route-id="@familiar.Id">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td> *@
+            </tr>
+        }
+    </tbody>
+</table>

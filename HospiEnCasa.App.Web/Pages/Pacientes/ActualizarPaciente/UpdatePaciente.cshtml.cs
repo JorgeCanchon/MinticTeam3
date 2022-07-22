@@ -15,22 +15,35 @@ namespace HospiEnCasa.App.Web.Pages
         {
             _repositorioPaciente = repositorioPaciente ?? throw new ArgumentNullException(nameof(repositorioPaciente));
         }
-        public void OnGet()
+        public ActionResult OnGet(int id)
         {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            Paciente = _repositorioPaciente.FindById(id);
+
+            if(Paciente == null)
+            {
+                return NotFound();
+            }
+
+            return Page();
         }
 
-        public ActionResult OnPut()
+        public ActionResult OnPost()
         {
             try
             {
                 if(ModelState.IsValid)
                 {
-                    var paciente = _repositorioPaciente.Create(Paciente);
+                    var paciente = _repositorioPaciente.Update(Paciente);
                     if(paciente.Id > 0)
                     {
                         return RedirectToPage("/Pacientes/Index");
                     }
-                    ErrorMessage = "No se pudo agregar paciente";
+                    ErrorMessage = "No se pudo actualizar el paciente";
                 }
 
                 ErrorMessage = "Modelo invalido por favor intente de nuevo";

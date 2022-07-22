@@ -7,7 +7,7 @@ namespace HospiEnCasa.App.Dominio
     {
         public Historia Historia { get; set; }
         /// Referencia a la lista de signos vitales del paciente
-        public List<SignoVital> SignoVitales { get; set; }
+        public System.Collections.Generic.List<SignoVital> SignoVitales { get; set; }
         /// Relación entre paciente y su familiar designado
         public FamiliarDesignado FamiliarDesignado { get; set; }
         public Enfermera Enfermera { get; set; }

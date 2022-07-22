@@ -1,8 +1,9 @@
 @page
 @model HospiEnCasa.App.Web.Pages.UpdatePacienteModel
 @{
+  <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
 }
-<div class="container">
+<div class="containerForm">
     <div class="title">Actualizacion de Paciente</div>
     <div class="content">
       <div class="row">
@@ -10,6 +11,7 @@
       </div>
       <form action="post">
         <div class="user-details">
+          <input type="hidden" asp-for="Paciente.Id" />
           <div class="input-box">
             <span class="details">Nombre</span>
             <input type="text" id="nombre" asp-for="Paciente.Nombre" placeholder="Ingrese su nombre" required>
@@ -43,28 +45,31 @@
             <input type="text" id="fechaNacimiento" asp-for="Paciente.FechaNacimiento" placeholder="Ingrese su fecha de nacimiento" required>
           </div>
         </div>
-        <div class="gender-details">
-          <input type="radio" asp-for="Paciente.Genero" name="gender" id="dot-1" value="0">
-          <input type="radio" asp-for="Paciente.Genero" name="gender" id="dot-2" value="1">
-          <input type="radio"asp-for="Paciente.Genero" name="gender" id="dot-3" value="2">
-          <span class="gender-title">Genero</span>
-          <div class="category">
-            <label for="dot-1">
-            <span class="dot one"></span>
-            <span class="gender">Masculino</span>
-          </label>
-          <label for="dot-2">
-            <span class="dot two"></span>
-            <span class="gender">Femenino</span>
-          </label>
-          <label for="dot-3">
-            <span class="dot three"></span>
-            <span class="gender">Prefiero no decirlo</span>
-            </label>
-          </div>
+        <div class="input-box">
+          <span class="details" for="genero">Género</span>
+          <select class="details" asp-for="Paciente.Genero">
+            <option value="0">Masculino</option>
+            <option value="1">Femenino</option>
+            <option value="2">Otro</option>
+          </select>
+          <span clas="text-danger" asp-validation-for="Paciente.Genero"></span>
         </div>
+        <div class="Title">Signos vitales</div>
+        <div class="input-box">
+            <span class="details">Fecha y hora</span>
+            <input type="text" id="FechaHora" asp-for="Paciente.SignoVitales" placeholder="Ingrese fecha de la toma" required>
+            <span class="details">Valores tomados</span>
+            <input type="text" id="Valor" asp-for="Paciente.SignoVitales" placeholder="Valor tomado" required>
+            <select name="details" id="Signo" asp-for="Paciente.SignoVitales">
+              <option value="1">Tensión arterial</option>
+              <option value="2">Frecuencia cardiaca</option>
+              <option value="3">Frecuencia respiratoria</option>
+              <option value="4">Saturación de oxigeno</option>
+              <option value="5">Temperatura Corporal</option>
+            </select>
+          </div>
         <div class="button">
-          <input type="submit" value="Registrar">
+          <input type="submit" value="Actualizar">
         </div>
       </form>
     </div>
