@@ -13,6 +13,6 @@
     <p>@Model.Medico.Especialidad</p>
     <a asp-page="../ActualizarMedico/UpdateMedico" asp-route-id="@Model.Medico.Id">Editar</a>
     <a asp-page="../PacientesAsignados/PacientesAsignados" asp-route-id="@Model.Medico.Id">Lista de pacientes asignados</a>
-    @* <a asp-page="./BorrarMedico/DeleteMedico" asp-route-id="@Model.Medico.Id">Eliminar</a> *@
+    <a asp-page="../BorrarMedico/DeleteMedico" asp-route-id="@Model.Medico.Id">Eliminar</a>
   </div>
 </div>

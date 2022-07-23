@@ -22,7 +22,7 @@ namespace HospiEnCasa.App.Web.Pages
 
         public IActionResult OnGet(int? id)
         {
-            ViewData["TitlePage"] = "Registrar familiar designado";
+            ViewData["TitlePage"] = "Registrar Familiar Designado";
             if (id.HasValue)
             {
                 FamiliarDesignado = _repositorioFamiliarDesignado.FindById(id.Value);
@@ -31,7 +31,7 @@ namespace HospiEnCasa.App.Web.Pages
                 {
                     return RedirectToPage("/FamiliarDesignado/Index");
                 }
-                ViewData["TitlePage"] = "Actualizar familiar designado";
+                ViewData["TitlePage"] = "Actualizar Familiar Designado";
             }
             return Page();
         }

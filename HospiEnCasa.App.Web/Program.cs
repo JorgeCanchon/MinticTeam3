@@ -8,6 +8,8 @@ builder.Services.AddDbContext<HospiEnCasa.App.Persistencia.AppContext>();
 builder.Services.AddScoped<IRepositorioPaciente, RepositorioPaciente>();
 builder.Services.AddScoped<IRepositorioFamiliarDesignado, RepositorioFamiliarDesignado>();
 builder.Services.AddScoped<IRepositorioMedico, RepositorioMedico>();
+builder.Services.AddScoped<IRepositorioEnfermera, RepositorioEnfermera>();
+builder.Services.AddScoped<IRepositorioUsuario,RepositorioUsuario>();
 
 var app = builder.Build();
 

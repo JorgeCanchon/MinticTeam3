@@ -1,0 +1,56 @@
+@page
+@model HospiEnCasa.App.Web.Pages.AddUpdateEnfermeraModel
+@{
+  <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
+}
+<div class="containerForm">
+  <div class="title">@ViewData["TitlePage"]</div>
+  <div class="content">
+    <div class="row">
+      <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" for="nombre">Nombre</span>
+          <input type="hidden" id="id" asp-for="Enfermera.Id" />
+          <input type="text" id="nombre" asp-for="Enfermera.Nombre" placeholder="Ingrese su nombre" />
+          <span class="text-danger" asp-validation-for="Enfermera.Nombre"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="apellidos">Apellidos</span>
+          <input type="text" id="apellidos" asp-for="Enfermera.Apellidos" placeholder="Ingrese sus apellidos">
+          <span class="text-danger" asp-validation-for="Enfermera.Apellidos"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="telefono">Teléfono</span>
+          <input type="text" id="telefono" asp-for="Enfermera.Telefono" placeholder="Ingrese su telefono">
+          <span class="text-danger" asp-validation-for="Enfermera.Telefono"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="tarjetaProfesional">Tarjeta Profesional</span>
+          <input type="text" id="tarjetaProfesional" asp-for="Enfermera.TarjetaProfesional"
+            placeholder="Ingrese su tarjeta profesional" />
+          <span class="text-danger" asp-validation-for="Enfermera.TarjetaProfesional"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="horasLaborales">Horas Laborales</span>
+          <input type="number" id="horasLaborales" asp-for="Enfermera.HorasLaborales" placeholder="Ingrese sus horas laborales" />
+          <span class="text-danger" asp-validation-for="Enfermera.HorasLaborales"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="genero">Género</span>
+          <select class="details" asp-for="Enfermera.Genero">
+            <option value="0">Masculino</option>
+            <option value="1">Femenino</option>
+            <option value="2">Otro</option>
+          </select>
+          <span class="text-danger" asp-validation-for="Enfermera.Genero"></span>
+        </div>
+      </div>
+       <div class="button">
+          <input type="submit" value="Enviar">
+        </div>
+    </form>
+  </div>
+</div>

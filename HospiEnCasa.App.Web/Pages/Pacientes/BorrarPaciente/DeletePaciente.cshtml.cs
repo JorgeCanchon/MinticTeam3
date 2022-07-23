@@ -17,27 +17,29 @@ namespace HospiEnCasa.App.Web.Pages.Pacientes
             _repositorioPaciente = repositorioPaciente ?? throw new ArgumentNullException(nameof(repositorioPaciente));
         }
 
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
-            
             Paciente = _repositorioPaciente.FindById(id);
+
+            if(Paciente == null)
+            {
+                return RedirectToPage("/Pacientes/Index");
+            }
+
+            return Page();
         }
 
-        public ActionResult OnPost(int id)
+        public IActionResult OnPost(int id)
         {
             try
             {
-                if(id > 0)
-                {
-                    if(Paciente != null){
-                        var entity = _repositorioPaciente.Delete(Paciente);
-                        if(entity);
-                            return RedirectToPage("/Pacientes/Index");
-                    }
-
-                    ErrorMessage = "No se pudo eliminar el paciente";
-                    return Page();
+                if(Paciente != null){
+                    _repositorioPaciente.Delete(id);
+                    return RedirectToPage("/Pacientes/Index");
                 }
+
+                ErrorMessage = "No se pudo eliminar el paciente";
+                return Page();
 
                 ErrorMessage = "Id invalido por favor intente de nuevo";
 

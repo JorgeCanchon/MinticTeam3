@@ -12,6 +12,7 @@ namespace HospiEnCasa.App.Persistencia
         public DbSet<SignoVital> SignosVitales { get; set; }
         public DbSet<SugerenciaCuidado> SugerenciasCuidado { get; set; }
         public DbSet<Enfermera> Enfermeras { get; set; }
+        public DbSet<Usuario> Usuarios {get;set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
