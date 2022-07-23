@@ -10,16 +10,24 @@ namespace HospiEnCasa.App.Web.Pages
     {
         private readonly IRepositorioPaciente _repositorioPaciente;
         private readonly IRepositorioMedico _repositorioMedico;
-       [BindProperty]
-        public Dominio.Paciente Paciente {get;set;}
-       [BindProperty]
-        public IEnumerable<Dominio.Medico> Medicos {get;set;}
-        public string ErrorMessage {get;set;}
+        [BindProperty]
+        public Dominio.Paciente Paciente { get; set; }
+        [BindProperty]
+        public IEnumerable<Dominio.Medico> Medicos { get; set; }
+        [BindProperty]
+        public Dominio.SignoVital SignoVital { get; set; }
+        [BindProperty]
+        public Dominio.FamiliarDesignado FamiliarDesignado { get; set; }
+        [BindProperty]
+        public Dominio.Historia Historia { get; set; }
+
+        public string ErrorMessage { get; set; }
         public AddPacienteModel(IRepositorioPaciente repositorioPaciente, IRepositorioMedico repositorioMedico)
         {
             _repositorioPaciente = repositorioPaciente ?? throw new ArgumentNullException(nameof(repositorioPaciente));
             _repositorioMedico = repositorioMedico ?? throw new ArgumentNullException(nameof(repositorioMedico));
         }
+
         public void OnGet()
         {
             Medicos = _repositorioMedico.FindAll().ToList();
@@ -29,10 +37,10 @@ namespace HospiEnCasa.App.Web.Pages
         {
             try
             {
-                if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     var paciente = _repositorioPaciente.Create(Paciente);
-                    if(paciente.Id > 0)
+                    if (paciente.Id > 0)
                     {
                         return RedirectToPage("/Pacientes/Index");
                     }
@@ -40,7 +48,9 @@ namespace HospiEnCasa.App.Web.Pages
                 }
 
                 ErrorMessage = "Modelo invalido por favor intente de nuevo";
-            } catch(Exception exception) {
+            }
+            catch (Exception exception)
+            {
                 ErrorMessage = "Error " + exception.Message;
             }
 
