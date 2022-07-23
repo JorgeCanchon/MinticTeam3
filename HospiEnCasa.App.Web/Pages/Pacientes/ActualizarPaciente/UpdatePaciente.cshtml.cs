@@ -10,7 +10,10 @@ namespace HospiEnCasa.App.Web.Pages
     {
         private readonly IRepositorioPaciente _repositorioPaciente;
         public Dominio.Paciente Paciente {get;set;}
+        public Dominio.FamiliarDesignado FamiliarDesignado { get; set; }
+
         public string ErrorMessage {get;set;}
+
         public UpdatePacienteModel(IRepositorioPaciente repositorioPaciente)
         {
             _repositorioPaciente = repositorioPaciente ?? throw new ArgumentNullException(nameof(repositorioPaciente));
@@ -38,6 +41,8 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 if(ModelState.IsValid)
                 {
+                    Paciente.FamiliarDesignado = FamiliarDesignado;
+
                     var paciente = _repositorioPaciente.Update(Paciente);
                     if(paciente.Id > 0)
                     {

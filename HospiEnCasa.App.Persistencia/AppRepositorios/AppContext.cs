@@ -20,5 +20,14 @@ namespace HospiEnCasa.App.Persistencia
                 optionsBuilder.UseSqlServer("Data Source=hospiencasa.cbw6kgjrpznb.us-east-1.rds.amazonaws.com;Initial Catalog=HospiEnCasaData;User ID=admin;Password=hospiencasa1;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
+
+        /*protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            modelBuilder
+                .Entity<FamiliarDesignado>()
+                .Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+        }*/
     }
 }

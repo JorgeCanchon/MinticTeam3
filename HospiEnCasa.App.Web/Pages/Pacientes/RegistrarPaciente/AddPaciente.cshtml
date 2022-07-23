@@ -38,15 +38,19 @@
                 </div>
                 <div class="input-box">
                   <span class="details">Enfermera</span>
-                  <input type="text" id="enfermera" asp-for="Paciente.Enfermera"
-                    placeholder="Ingrese la enfermera encargada" required>
+                  <select id="enfermera" asp-for="Enfermera.Id">
+                    @foreach (var enfermera in Model.Enfermeras)
+                    {
+                      <option value="@enfermera.Id">@enfermera.Nombre @enfermera.Apellidos</option>
+                    }
+                  </select>
                 </div>
                 <div class="input-box">
                   <span class="details">Medico</span>
-                  <select id="medico">
+                  <select id="medico" asp-for="Medico.Id">
                     @foreach (var medico in Model.Medicos)
                     {
-                      <option value="@medico">@medico.Nombre</option>
+                      <option value="@medico.Id">@medico.Nombre @medico.Apellidos</option>
                     }
                   </select>
                 </div>
@@ -144,7 +148,6 @@
               <div class="user-details">
                 <div class="input-box">
                   <span class="details" for="nombre">Entorno</span>
-                  <input type="hidden" id="idHistoria" asp-for="Historia.Id" />
                   <input type="text" id="entorno" asp-for="Historia.Entorno" placeholder="Ingrese entorno" />
                   <span clas="text-danger" asp-validation-for="Historia.Entorno"></span>
                 </div>
@@ -152,7 +155,7 @@
               <div class="user-details">
                 <div class="input-box">
                   <span class="details" for="nombre">Diagnostico</span>
-                  <textarea></textarea>
+                  <textarea asp-for="Historia.Diagnostico"></textarea>
                   <span clas="text-danger" asp-validation-for="Historia.Diagnostico"></span>
                 </div>
               </div>
@@ -169,11 +172,29 @@
           <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
-              plugin adds the appropriate classes that we use to style each element. These classes control the overall
-              appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom
-              CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
-              <code>.accordion-body</code>, though the transition does limit overflow.
+              <div class="user-details">
+                <div class="input-box">
+                  <span class="details" for="fechaHora">Fecha y hora</span>
+                  <input type="datetime-local" id="FechaHora" asp-for="SignoVital.FechaHora"
+                    placeholder="Ingrese fecha de la toma" required>
+                  <span class="text-danger" asp-validation-for="SignoVital.FechaHora"></span>
+                </div>
+                <div class="input-box">
+                  <span class="details" for="valor">Valores tomados</span>
+                  <input type="text" id="valor" asp-for="SignoVital.Valor" placeholder="Valor tomado" required>
+                  <span class="text-danger" asp-validation-for="SignoVital.Valor"></span>
+                </div>
+                <div class="input-box">
+                  <select class="details" name="signo" multiple="yes" size="5" id="Signo" asp-for="SignoVital.Signo">
+                    <option value="1">Tensión arterial</option>
+                    <option value="2">Frecuencia cardiaca</option>
+                    <option value="3">Frecuencia respiratoria</option>
+                    <option value="4">Saturación de oxigeno</option>
+                    <option value="5">Temperatura Corporal</option>
+                  </select>
+                  <span class="text-danger" asp-validation-for="SignoVital.Signo"></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
