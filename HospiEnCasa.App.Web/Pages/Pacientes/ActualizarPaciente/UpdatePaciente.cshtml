@@ -54,6 +54,20 @@
           </select>
           <span clas="text-danger" asp-validation-for="Paciente.Genero"></span>
         </div>
+        <div class="Title">Signos vitales</div>
+        <div class="input-box">
+            <span class="details">Fecha y hora</span>
+            <input type="text" id="FechaHora" asp-for="Paciente.SignoVitales" placeholder="Ingrese fecha de la toma" required>
+            <span class="details">Valores tomados</span>
+            <input type="text" id="Valor" asp-for="Paciente.SignoVitales" placeholder="Valor tomado" required>
+            <select name="details" id="Signo" asp-for="Paciente.SignoVitales">
+              <option value="1">Tensión arterial</option>
+              <option value="2">Frecuencia cardiaca</option>
+              <option value="3">Frecuencia respiratoria</option>
+              <option value="4">Saturación de oxigeno</option>
+              <option value="5">Temperatura Corporal</option>
+            </select>
+          </div>
         <div class="button">
           <input type="submit" value="Actualizar">
         </div>

@@ -15,6 +15,7 @@ namespace HospiEnCasa.App.Dominio
         public FamiliarDesignado FamiliarDesignado { get; set; }
         [ForeignKey("Id")]
         public Enfermera Enfermera { get; set; }
+        [ForeignKey("Id")]
         public Medico Medico { get; set; }
         public string Direccion { get; set; }
         public float? Latitud { get; set; }
