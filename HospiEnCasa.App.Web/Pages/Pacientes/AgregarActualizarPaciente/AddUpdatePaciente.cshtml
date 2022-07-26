@@ -32,35 +32,35 @@
           <select class="details" asp-for="Paciente.FamiliarDesignado">
             @for(var i = 0; i < Model.FamiliaresDesignados.Count(); i++)
             {
-              <option value="@Model.FamiliaresDesignados[i].Id">@Model.FamiliaresDesignados[i].Nombre @Model.FamiliaresDesignados[i].Apellidos</option>
+              <option value="@Model.FamiliaresDesignados[i]">@Model.FamiliaresDesignados[i].Nombre @Model.FamiliaresDesignados[i].Apellidos</option>
             }
           </select>
-          @* <span class="text-danger" asp-validation-for="Paciente.FamiliarDesignado"></span> *@
+          <span class="text-danger" asp-validation-for="Paciente.FamiliarDesignado"></span>
         </div>
         <div class="input-box">
           <span class="details" for="enfermera">Enfermera</span>
           <select class="details" asp-for="Paciente.Enfermera">
             @foreach(var enfermera in Model.Enfermeras)
             {
-              <option value="@enfermera.Id">@enfermera.Nombre @enfermera.Apellidos</option>
+              <option value="@enfermera">@enfermera.Nombre @enfermera.Apellidos</option>
             }
           </select>
-          @* <span class="text-danger" asp-validation-for="Paciente.Enfermera"></span> *@
+          <span class="text-danger" asp-validation-for="Paciente.Enfermera"></span>
         </div>
         <div class="input-box">
           <span class="details" for="medico">Medico</span>
           <select class="details" asp-for="Paciente.Medico">
             @foreach(var medico in Model.Medicos)
             {
-              <option value="@medico.Id">@medico.Nombre @medico.Apellidos</option>
+              <option value="@medico">@medico.Nombre @medico.Apellidos</option>
             }
           </select>
-          @* <span class="text-danger" asp-validation-for="Paciente.Medico"></span> *@
+          <span class="text-danger" asp-validation-for="Paciente.Medico"></span>
         </div>
         <div class="input-box">
           <span class="details" for="direccion">Direccion</span>
           <input type="text" id="direccion" asp-for="Paciente.Direccion" placeholder="Ingrese su direccion">
-          @* <span class="text-danger" asp-validation-for="Paciente.Direccion"></span> *@
+          <span class="text-danger" asp-validation-for="Paciente.Direccion"></span>
         </div>
         <div class="input-box">
           <span class="details" for="ciudad">Ciudad</span>
