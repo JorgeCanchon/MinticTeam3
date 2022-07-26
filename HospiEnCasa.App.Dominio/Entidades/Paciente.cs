@@ -7,7 +7,6 @@ namespace HospiEnCasa.App.Dominio
 {
     public class Paciente : Persona
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Id { get; set; }
         [ForeignKey("Id")]
         public Historia Historia { get; set; }

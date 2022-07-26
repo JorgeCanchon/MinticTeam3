@@ -6,7 +6,6 @@ namespace HospiEnCasa.App.Dominio
 {
     public class Medico : Persona
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Id { get; set; }
         public string Especialidad { get; set; }
         public string Codigo { get; set; }

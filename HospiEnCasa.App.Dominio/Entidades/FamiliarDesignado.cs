@@ -6,7 +6,6 @@ namespace HospiEnCasa.App.Dominio
 {
     public class FamiliarDesignado : Persona
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Id { get; set; }
         public string Parentesco { get; set; }
         public string Correo { get; set; }

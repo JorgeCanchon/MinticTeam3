@@ -30,13 +30,7 @@ namespace HospiEnCasa.App.Persistencia
            
             builder.Entity<Paciente>().HasKey(propiedad => new { propiedad.Id });
             builder.Entity<FamiliarDesignado>().HasKey(propiedad => new { propiedad.Id });
-
-            // modelBuilder.Entity<FamiliarDesignado>(entity =>
-            // {
-            //     entity.HasKey(x => x.Id);
-            //     entity.Property(x => x.Id).HasDefaultValue(0);
-            // });
-
+            
             builder.HasAnnotation("Sqlite:Autoincement", true)
                 .HasAnnotation("MySql:ValueGeneratedOnAdd", true)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
