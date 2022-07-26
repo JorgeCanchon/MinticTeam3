@@ -6,7 +6,7 @@ namespace HospiEnCasa.App.Dominio
 {
     public class Persona
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int? Id { get; set; }
         [Required]
         [Display(Prompt = "Ingrese nombre")]

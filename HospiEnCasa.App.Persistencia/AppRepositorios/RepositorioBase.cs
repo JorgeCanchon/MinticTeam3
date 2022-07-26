@@ -23,13 +23,6 @@ namespace HospiEnCasa.App.Persistencia
             return result;
         }
 
-        public bool Delete(T entity)
-        {
-            var result = Context.Set<T>().Remove(entity).State;
-            Context.SaveChanges();
-            return result == EntityState.Deleted;
-        }
-
         public IQueryable<T> FindAll() =>
             Context.Set<T>().AsNoTracking();
 
@@ -43,6 +36,19 @@ namespace HospiEnCasa.App.Persistencia
         {
             Context.Attach(entity).State = EntityState.Modified;
             Context.SaveChanges();
+            return entity;
+        }
+        
+        public T Delete(int id)
+        {
+            var entity = Context.Set<T>().Find(id);
+            if(entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            Context.Set<T>().Remove(entity);
+            Context.SaveChanges();
+
             return entity;
         }
     }

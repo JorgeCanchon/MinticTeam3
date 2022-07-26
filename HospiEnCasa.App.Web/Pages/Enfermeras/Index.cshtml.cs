@@ -4,21 +4,21 @@ using HospiEnCasa.App.Persistencia;
 using HospiEnCasa.App.Dominio;
 using System.Linq;
 
-namespace HospiEnCasa.App.Web.Pages.Pacientes
+namespace HospiEnCasa.App.Web.Pages.Enfermeras
 {
     public class IndexModel : PageModel
     {
-        private readonly IRepositorioPaciente _repositorioPaciente;
-        public List<Paciente> Pacientes {get;set;}
+        private readonly IRepositorioEnfermera _repositorioEnfermera;
+        public List<Dominio.Enfermera> Enfermeras { get; set; }
 
-        public IndexModel(IRepositorioPaciente repositorioPaciente)
+        public IndexModel(IRepositorioEnfermera repositorioEnfermera)
         {
-            _repositorioPaciente = repositorioPaciente;
+            _repositorioEnfermera = repositorioEnfermera;
         }
-        
+
         public void OnGet()
         {
-            Pacientes = _repositorioPaciente.FindAll().ToList();
+            Enfermeras = _repositorioEnfermera.FindAll().ToList();
         }
 
         public ActionResult OnPost()

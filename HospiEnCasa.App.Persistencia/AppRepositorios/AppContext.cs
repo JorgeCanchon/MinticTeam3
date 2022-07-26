@@ -1,5 +1,8 @@
+using System;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using HospiEnCasa.App.Dominio;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HospiEnCasa.App.Persistencia
 {
@@ -12,6 +15,7 @@ namespace HospiEnCasa.App.Persistencia
         public DbSet<SignoVital> SignosVitales { get; set; }
         public DbSet<SugerenciaCuidado> SugerenciasCuidado { get; set; }
         public DbSet<Enfermera> Enfermeras { get; set; }
+        public DbSet<Usuario> Usuarios {get;set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,13 +25,23 @@ namespace HospiEnCasa.App.Persistencia
             }
         }
 
-        /*protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
+           
+            builder.Entity<Paciente>().HasKey(propiedad => new { propiedad.Id });
+            builder.Entity<FamiliarDesignado>().HasKey(propiedad => new { propiedad.Id });
+
+            // modelBuilder.Entity<FamiliarDesignado>(entity =>
+            // {
+            //     entity.HasKey(x => x.Id);
+            //     entity.Property(x => x.Id).HasDefaultValue(0);
+            // });
+
+            builder.HasAnnotation("Sqlite:Autoincement", true)
+                .HasAnnotation("MySql:ValueGeneratedOnAdd", true)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            
             base.OnModelCreating(builder);
-            modelBuilder
-                .Entity<FamiliarDesignado>()
-                .Property(e => e.Id)
-                .ValueGeneratedOnAdd();
-        }*/
+        }
     }
 }

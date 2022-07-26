@@ -1,0 +1,61 @@
+@page
+@model HospiEnCasa.App.Web.Pages.AddUpdateMedicoModel
+@{
+  <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
+}
+<div class="containerForm">
+  <div class="title">@ViewData["TitlePage"]</div>
+  <div class="content">
+    <div class="row">
+      <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" for="nombre">Nombre</span>
+          <input type="hidden" id="id" asp-for="Medico.Id" />
+          <input type="text" id="nombre" asp-for="Medico.Nombre" placeholder="Ingrese su nombre" />
+          <span class="text-danger" asp-validation-for="Medico.Nombre"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="apellidos">Apellidos</span>
+          <input type="text" id="apellidos" asp-for="Medico.Apellidos" placeholder="Ingrese sus apellidos">
+          <span class="text-danger" asp-validation-for="Medico.Apellidos"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="telefono">Teléfono</span>
+          <input type="text" id="telefono" asp-for="Medico.Telefono" placeholder="Ingrese su telefono">
+          <span class="text-danger" asp-validation-for="Medico.Telefono"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="especialidad">Especialidad</span>
+          <input type="text" id="especialidad" asp-for="Medico.Especialidad"
+            placeholder="Ingrese su especialidad" />
+          <span class="text-danger" asp-validation-for="Medico.Especialidad"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="codigo">Codigo</span>
+          <input type="text" id="codigo" asp-for="Medico.Codigo" placeholder="Ingrese su codigo" />
+          <span class="text-danger" asp-validation-for="Medico.Codigo"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="registroRethus">Registro Rethus</span>
+          <input type="text" id="registroRethus" asp-for="Medico.RegistroRethus" placeholder="Ingrese su registro rethus" />
+          <span class="text-danger" asp-validation-for="Medico.RegistroRethus"></span>
+        </div>
+      </div>
+      <div class="input-box">
+          <span class="details" for="genero">Género</span>
+          <select class="details" asp-for="Medico.Genero">
+            <option value="0">Masculino</option>
+            <option value="1">Femenino</option>
+            <option value="2">Otro</option>
+          </select>
+          <span class="text-danger" asp-validation-for="Medico.Genero"></span>
+        </div>
+       <div class="button">
+          <input type="submit" value="Enviar">
+        </div>
+    </form>
+  </div>
+</div>

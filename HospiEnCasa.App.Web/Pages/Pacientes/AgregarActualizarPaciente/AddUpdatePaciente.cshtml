@@ -1,0 +1,103 @@
+@page
+@model HospiEnCasa.App.Web.Pages.AddUpdatePacienteModel
+@{
+  <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
+}
+<div class="containerForm">
+  <div class="title">@ViewData["TitlePage"]</div>
+  <div class="content">
+    <div class="row">
+      <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" for="nombre">Nombre</span>
+          <input type="hidden" id="id" asp-for="Paciente.Id" />
+          <input type="text" id="nombre" asp-for="Paciente.Nombre" placeholder="Ingrese su nombre" />
+          <span class="text-danger" asp-validation-for="Paciente.Nombre"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="apellidos">Apellidos</span>
+          <input type="text" id="apellidos" asp-for="Paciente.Apellidos" placeholder="Ingrese sus apellidos">
+          <span class="text-danger" asp-validation-for="Paciente.Apellidos"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="telefono">Teléfono</span>
+          <input type="text" id="telefono" asp-for="Paciente.Telefono" placeholder="Ingrese su telefono">
+          <span class="text-danger" asp-validation-for="Paciente.Telefono"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="familiarDesignado">Familiar Designado</span>
+          <select class="details" asp-for="Paciente.FamiliarDesignado">
+            @for (var i = 0; i < Model.FamiliaresDesignados.Count(); i++)
+            {
+              <option value="@Model.FamiliaresDesignados[i].Id">@Model.FamiliaresDesignados[i].Nombre
+                @Model.FamiliaresDesignados[i].Apellidos</option>
+            }
+          </select>
+          @* <span class="text-danger" asp-validation-for="Paciente.FamiliarDesignado"></span> *@
+        </div>
+        <div class="input-box">
+          <span class="details" for="enfermera">Enfermera</span>
+          <select class="details" asp-for="Paciente.Enfermera">
+            @foreach (var enfermera in Model.Enfermeras)
+            {
+              <option value="@enfermera.Id">@enfermera.Nombre @enfermera.Apellidos</option>
+            }
+          </select>
+          @* <span class="text-danger" asp-validation-for="Paciente.Enfermera"></span> *@
+        </div>
+        <div class="input-box">
+          <span class="details" for="medico">Medico</span>
+          <select class="details" asp-for="Paciente.Medico">
+            @foreach (var medico in Model.Medicos)
+            {
+              <option value="@medico.Id">@medico.Nombre @medico.Apellidos</option>
+            }
+          </select>
+          @* <span class="text-danger" asp-validation-for="Paciente.Medico"></span> *@
+        </div>
+        <div class="input-box">
+          <span class="details" for="direccion">Direccion</span>
+          <input type="text" id="direccion" asp-for="Paciente.Direccion" placeholder="Ingrese su direccion">
+          @* <span class="text-danger" asp-validation-for="Paciente.Direccion"></span> *@
+        </div>
+        <div class="input-box">
+          <span class="details" for="ciudad">Ciudad</span>
+          <input type="text" id="ciudad" asp-for="Paciente.Ciudad" placeholder="Ingrese su ciudad de residencia">
+          <span class="text-danger" asp-validation-for="Paciente.Ciudad"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="fechaNacimiento">Fecha de Nacimiento</span>
+          <input type="date" id="fechaNacimiento" asp-for="Paciente.FechaNacimiento"
+            placeholder="Ingrese su fecha de nacimiento">
+          <span class="text-danger" asp-validation-for="Paciente.FechaNacimiento"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="genero">Género</span>
+          <select class="details" asp-for="Paciente.Genero">
+            <option value="0">Masculino</option>
+            <option value="1">Femenino</option>
+            <option value="2">Otro</option>
+          </select>
+          <span class="text-danger" asp-validation-for="Paciente.Genero"></span>
+        </div>
+        <legend>Historia</legend>
+        <div class="input-box">
+          <span class="details" for="entorno">Entorno</span>
+          <input type="text" id="entorno" asp-for="Paciente.Historia.Entorno" placeholder="Ingrese entorno">
+          <span class="text-danger" asp-validation-for="Paciente.Historia.Entorno"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="diagnostico">Diagnostico</span>
+          <textarea type="text" id="diagnostico" asp-for="Paciente.Historia.Diagnostico" placeholder="Ingrese entorno"> </textarea>
+          <span class="text-danger" asp-validation-for="Paciente.Historia.Diagnostico"></span>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Enviar">
+      </div>
+    </form>
+  </div>
+</div>
