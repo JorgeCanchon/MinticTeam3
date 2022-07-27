@@ -28,6 +28,9 @@ namespace HospiEnCasa.App.Persistencia
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) =>
             Context.Set<T>().Where(expression).AsNoTracking();
+
+        public T FindByConditionSingle(Expression<Func<T, bool>> expression) =>
+            Context.Set<T>().SingleOrDefault(expression);
             
         public T FindById(int id) =>
             Context.Set<T>().Find(id);
@@ -38,7 +41,7 @@ namespace HospiEnCasa.App.Persistencia
             Context.SaveChanges();
             return entity;
         }
-        
+
         public T Delete(int id)
         {
             var entity = Context.Set<T>().Find(id);

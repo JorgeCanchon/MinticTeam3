@@ -20,18 +20,17 @@ namespace HospiEnCasa.App.Web.Pages.Usuarios.Register
         {
             _repositorioUsuario = repositorioUsuario;
         }
+
         public void OnGet()
         {
         }
 
         public IActionResult OnPost()
         {
-            Func<IActionResult> function;
-
-            function = () =>
+            Func<IActionResult> function = () =>
             {
-                var usuario = _repositorioUsuario.CreateUser(Usuario.Email, Usuario.UserName, Usuario.Password);
-                if(usuario.Id > 0)
+                var usuario = _repositorioUsuario.Create(Usuario);
+                if(usuario.IdUsuario > 0)
                     return RedirectToPage("/Login/Index");
                 ErrorMessage = "No se pudo insertar usuario";
 

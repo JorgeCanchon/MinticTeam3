@@ -8,7 +8,9 @@ namespace HospiEnCasa.App.Dominio
     {
         [Key]
         public int IdSugerenciaCuidado { get; set; }
+        [Required]
         public DateTime FechaHora { get; set; }
+        [Required]
         public string Descripcion { get; set; }
     }
 }

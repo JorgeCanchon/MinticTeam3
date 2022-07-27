@@ -90,58 +90,7 @@
             </div>
           </div>
         </div>
-        @if(Model.Paciente == null)
-        {
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Datos familiar designado
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <div class="user-details">
-                  <div class="input-box">
-                    <span class="details" for="nombre">Nombre</span>
-                    <input type="hidden" id="idFamiliarDesignado" asp-for="FamiliarDesignado.IdFamiliarDesignado" />
-                    <input type="text" id="nombre" asp-for="FamiliarDesignado.Nombre" placeholder="Ingrese su nombre" />
-                    <span clas="text-danger" asp-validation-for="FamiliarDesignado.Nombre"></span>
-                  </div>
-                  <div class="input-box">
-                    <span class="details" for="apellidos">Apellidos</span>
-                    <input type="text" id="apellidos" asp-for="FamiliarDesignado.Apellidos" placeholder="Ingrese sus apellidos">
-                    <span clas="text-danger" asp-validation-for="FamiliarDesignado.Apellidos"></span>
-                  </div>
-                  <div class="input-box">
-                    <span class="details" for="telefono">Teléfono</span>
-                    <input type="text" id="telefono" asp-for="FamiliarDesignado.Telefono" placeholder="Ingrese su telefono">
-                    <span clas="text-danger" asp-validation-for="FamiliarDesignado.Telefono"></span>
-                  </div>
-                  <div class="input-box">
-                    <span class="details" for="parentesco">Parentesco</span>
-                    <input type="text" id="parentesco" asp-for="FamiliarDesignado.Parentesco" placeholder="Ingrese su especialidad" />
-                    <span clas="text-danger" asp-validation-for="FamiliarDesignado.Parentesco"></span>
-                  </div>
-                  <div class="input-box">
-                    <span class="details" for="correo">Correo</span>
-                    <input type="email" id="correo" asp-for="FamiliarDesignado.Correo" placeholder="Ingrese su email" />
-                    <span clas="text-danger" asp-validation-for="FamiliarDesignado.Correo"></span>
-                  </div>
-                  <div class="input-box">
-                    <span class="details" for="genero">Género</span>
-                    <select class="details" asp-for="FamiliarDesignado.Genero">
-                      <option value="0">Masculino</option>
-                      <option value="1">Femenino</option>
-                      <option value="2">Otro</option>
-                    </select>
-                    <span clas="text-danger" asp-validation-for="FamiliarDesignado.Genero"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
-        @* <div class="accordion-item">
+        <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               Datos familiar designado
@@ -188,7 +137,7 @@
               </div>
             </div>
           </div>
-        </div> *@
+        </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
