@@ -48,7 +48,7 @@ namespace HospiEnCasa.App.Web.Pages
                     if (familiar.IdFamiliarDesignado > 0) 
                         return RedirectToPage("/FamiliarDesignado/Index");
 
-                ErrorMessage = message;
+                ErrorMessage = "No se pudo actualizar el familiar";
 
                     return Page();
                 };
@@ -71,12 +71,12 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 if (ModelState.IsValid)
                 {
-                    if (FamiliarDesignado.Id > 0)
+                    if (FamiliarDesignado.IdFamiliarDesignado > 0)
                     {
-                        return function("No se pudo actualizar el familiar", false); 
+                        return function(); 
                     }
 
-                    return function("No se pudo insertar familiar", true); 
+                    return function(); 
                 }
 
                 ErrorMessage = "Modelo inválido por favor intente de nuevo";

@@ -1,4 +1,6 @@
 using HospiEnCasa.App.Persistencia;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,29 @@ builder.Services.AddScoped<IRepositorioEnfermera, RepositorioEnfermera>();
 builder.Services.AddScoped<IRepositorioUsuario,RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioHistoria, RepositorioHistoria>();
 
+builder.Services.AddSession(options => 
+{
+  options.IdleTimeout = TimeSpan.FromMinutes(30);
+});
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+  .AddCookie(options =>
+  {
+    options.LoginPath = "/Login/Login";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    options.AccessDeniedPath = "/Login/Denied";
+  });
+
+builder.Services.AddMvc();
+
 var app = builder.Build();
+
+app.UseCookiePolicy();
+app.UseAuthentication();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -28,6 +52,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+// app.UseAuthentication();
+
+app.UseSession();
 
 app.MapRazorPages();
 

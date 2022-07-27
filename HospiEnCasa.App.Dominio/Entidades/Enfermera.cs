@@ -17,7 +17,9 @@ namespace HospiEnCasa.App.Dominio
         public string Telefono { get; set; }
         [Required]
         public Genero Genero { get; set; }
+        [Required]
         public string TarjetaProfesional { get; set; }
+        [Required]
         public int HorasLaborales { get; set; }
     }
 }

@@ -3,8 +3,7 @@ using HospiEnCasa.App.Dominio;
 
 namespace HospiEnCasa.App.Persistencia
 {
-  public interface IRepositorioUsuario
+  public interface IRepositorioUsuario : IRepositorioBase<Usuario>
   {
-    Usuario CreateUser(string email, string username, string password);
   }
 }

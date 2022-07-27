@@ -28,10 +28,13 @@ namespace HospiEnCasa.App.Dominio
         public Enfermera Enfermera { get; set; }
         [ForeignKey("IdMedico")]
         public Medico Medico { get; set; }
+        [Required]
         public string Direccion { get; set; }
         public float? Latitud { get; set; }
         public float? Longitud { get; set; }
+        [Required]
         public string Ciudad { get; set; }
+        [Required]
         public DateTime FechaNacimiento { get; set; }
     }
 }

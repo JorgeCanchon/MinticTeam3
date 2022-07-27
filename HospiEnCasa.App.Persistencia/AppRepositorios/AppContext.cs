@@ -28,8 +28,8 @@ namespace HospiEnCasa.App.Persistencia
         protected override void OnModelCreating(ModelBuilder builder)
         {
            
-            builder.Entity<Paciente>().HasKey(propiedad => new { propiedad.Id });
-            builder.Entity<FamiliarDesignado>().HasKey(propiedad => new { propiedad.Id });
+            builder.Entity<Paciente>().HasKey(propiedad => new { propiedad.IdPaciente });
+            builder.Entity<FamiliarDesignado>().HasKey(propiedad => new { propiedad.IdFamiliarDesignado });
             
             builder.HasAnnotation("Sqlite:Autoincement", true)
                 .HasAnnotation("MySql:ValueGeneratedOnAdd", true)

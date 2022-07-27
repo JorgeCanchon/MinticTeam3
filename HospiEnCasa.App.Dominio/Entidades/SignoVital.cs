@@ -8,8 +8,11 @@ namespace HospiEnCasa.App.Dominio
     {
         [Key]
         public int IdSignoVital { get; set; }
+        [Required]
         public DateTime FechaHora { get; set; }
+        [Required]
         public float Valor { get; set; }
+        [Required]
         public TipoSigno Signo { get; set; }
     }
 }

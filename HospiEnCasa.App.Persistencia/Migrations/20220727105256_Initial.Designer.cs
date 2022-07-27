@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospiEnCasa.App.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220726220351_Inicial")]
-    partial class Inicial
+    [Migration("20220727105256_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,11 +28,11 @@ namespace HospiEnCasa.App.Persistencia.Migrations
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.Enfermera", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int?>("IdEnfermera")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("IdEnfermera"), 1L, 1);
 
                     b.Property<string>("Apellidos")
                         .IsRequired()
@@ -56,18 +56,18 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdEnfermera");
 
                     b.ToTable("Enfermeras");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.FamiliarDesignado", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int?>("IdFamiliarDesignado")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("IdFamiliarDesignado"), 1L, 1);
 
                     b.Property<string>("Apellidos")
                         .IsRequired()
@@ -92,18 +92,18 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdFamiliarDesignado");
 
                     b.ToTable("FamiliaresDesignados");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.Historia", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("IdHistoria")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdHistoria"), 1L, 1);
 
                     b.Property<string>("Diagnostico")
                         .IsRequired()
@@ -113,18 +113,18 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdHistoria");
 
                     b.ToTable("Historias");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.Medico", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int?>("IdMedico")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("IdMedico"), 1L, 1);
 
                     b.Property<string>("Apellidos")
                         .IsRequired()
@@ -153,15 +153,18 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdMedico");
 
                     b.ToTable("Medicos");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.Paciente", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int?>("IdPaciente")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("IdPaciente"), 1L, 1);
 
                     b.Property<string>("Apellidos")
                         .IsRequired()
@@ -181,6 +184,18 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<int>("Genero")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdEnfermera")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdFamiliarDesignado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdHistoria")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdMedico")
+                        .HasColumnType("int");
+
                     b.Property<float?>("Latitud")
                         .HasColumnType("real");
 
@@ -195,15 +210,22 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdPaciente");
+
+                    b.HasIndex("IdEnfermera");
+
+                    b.HasIndex("IdFamiliarDesignado");
+
+                    b.HasIndex("IdHistoria");
+
+                    b.HasIndex("IdMedico");
 
                     b.ToTable("Pacientes");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.SignoVital", b =>
                 {
-                    b.Property<int?>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("IdSignoVital")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaHora")
@@ -215,18 +237,18 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<float>("Valor")
                         .HasColumnType("real");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdSignoVital");
 
                     b.ToTable("SignosVitales");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.SugerenciaCuidado", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("IdSugerenciaCuidado")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdSugerenciaCuidado"), 1L, 1);
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -235,33 +257,27 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<DateTime>("FechaHora")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("HistoriaId")
+                    b.Property<int?>("HistoriaIdHistoria")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdSugerenciaCuidado");
 
-                    b.HasIndex("HistoriaId");
+                    b.HasIndex("HistoriaIdHistoria");
 
                     b.ToTable("SugerenciasCuidado");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.Usuario", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int?>("IdUsuario")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("IdUsuario"), 1L, 1);
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastLoginDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -271,11 +287,11 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdUsuario");
 
                     b.ToTable("Usuarios");
                 });
@@ -284,25 +300,25 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                 {
                     b.HasOne("HospiEnCasa.App.Dominio.Enfermera", "Enfermera")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdEnfermera")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HospiEnCasa.App.Dominio.FamiliarDesignado", "FamiliarDesignado")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdFamiliarDesignado")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HospiEnCasa.App.Dominio.Historia", "Historia")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdHistoria")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HospiEnCasa.App.Dominio.Medico", "Medico")
                         .WithMany()
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdMedico")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -319,7 +335,7 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                 {
                     b.HasOne("HospiEnCasa.App.Dominio.Paciente", null)
                         .WithMany("SignoVitales")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdSignoVital")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -328,7 +344,7 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                 {
                     b.HasOne("HospiEnCasa.App.Dominio.Historia", null)
                         .WithMany("Sugerencias")
-                        .HasForeignKey("HistoriaId");
+                        .HasForeignKey("HistoriaIdHistoria");
                 });
 
             modelBuilder.Entity("HospiEnCasa.App.Dominio.Historia", b =>

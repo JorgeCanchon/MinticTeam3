@@ -51,6 +51,7 @@ namespace HospiEnCasa.App.Web.Pages
             if (id.HasValue)
             {
                 Paciente = _repositorioPaciente.FindById(id.Value);
+                // FamiliarDesignado = _repositorioFamiliarDesignado.FindById(1);
                 // Historia = _repositorioHistoria.FindById(Paciente.);
 
                 if (Paciente == null)
@@ -71,12 +72,12 @@ namespace HospiEnCasa.App.Web.Pages
                 function = () =>
                 {
                     var paciente = _repositorioPaciente.Update(Paciente);
-                    var familiarDesignado = _repositorioFamiliarDesignado.Update(FamiliarDesignado);
+                    // var familiarDesignado = _repositorioFamiliarDesignado.FindById(1);
                     
-                    if (paciente.IdPaciente > 0 && familiarDesignado.IdFamiliarDesignado > 0) 
+                    if (paciente.IdPaciente > 0) 
                         return RedirectToPage("/Pacientes/Index");
-
-                ErrorMessage = message;
+                        
+                    ErrorMessage = "No se pudo actualizar el paciente";
 
                     return Page();
                 };
@@ -98,8 +99,8 @@ namespace HospiEnCasa.App.Web.Pages
                     var paciente = _repositorioPaciente.Create(Paciente);
                     if (paciente.IdPaciente > 0) 
                         return RedirectToPage("/Pacientes/Index");
-
-                    ErrorMessage = "No se pudo insertar paciente";
+                        
+                    ErrorMessage = "No se pudo insertar el paciente";
                     
                     return Page();
                 };
@@ -109,10 +110,10 @@ namespace HospiEnCasa.App.Web.Pages
             {
                 if (ModelState.IsValid)
                 {
-                    return function("No se pudo actualizar el paciente", false);
+                    return function();
                 }
 
-                return function("No se pudo insertar el paciente", true);
+                return function();
             }
             catch (Exception exception)
             {
@@ -126,7 +127,6 @@ namespace HospiEnCasa.App.Web.Pages
 
         private void FillSelects()
         {
-            FamiliaresDesignados = _repositorioFamiliarDesignado.FindAll().ToList();
             Medicos = _repositorioMedico.FindAll().ToList();
             Enfermeras = _repositorioEnfermera.FindAll().ToList();
         }
