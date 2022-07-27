@@ -78,6 +78,8 @@ namespace HospiEnCasa.App.Web.Pages
 
             try
             {
+                Paciente.FamiliarDesignado = FamiliarDesignado;
+                Paciente.Historia = Historia;
 
                 if (Paciente.IdPaciente > 0)
                 {

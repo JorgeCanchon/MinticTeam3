@@ -10,7 +10,7 @@ namespace HospiEnCasa.App.Dominio
         // [Required]
         public List<SugerenciaCuidado> Sugerencias { get; set; }
         [Key]
-        public int IdHistoria { get; set; }
+        public int? IdHistoria { get; set; }
         [Required]
         public string Diagnostico { get; set; }
         [Required]
