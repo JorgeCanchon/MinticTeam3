@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HospiEnCasa.App.Persistencia.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,137 +13,155 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                 name: "Enfermeras",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    IdEnfermera = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TarjetaProfesional = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HorasLaborales = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Genero = table.Column<int>(type: "int", nullable: false)
+                    Genero = table.Column<int>(type: "int", nullable: false),
+                    TarjetaProfesional = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HorasLaborales = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Enfermeras", x => x.Id);
+                    table.PrimaryKey("PK_Enfermeras", x => x.IdEnfermera);
                 });
 
             migrationBuilder.CreateTable(
                 name: "FamiliaresDesignados",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    IdFamiliarDesignado = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Parentesco = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Genero = table.Column<int>(type: "int", nullable: false)
+                    Genero = table.Column<int>(type: "int", nullable: false),
+                    Parentesco = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FamiliaresDesignados", x => x.Id);
+                    table.PrimaryKey("PK_FamiliaresDesignados", x => x.IdFamiliarDesignado);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Historias",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    IdHistoria = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Diagnostico = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Entorno = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Historias", x => x.Id);
+                    table.PrimaryKey("PK_Historias", x => x.IdHistoria);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Medicos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    IdMedico = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Especialidad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Codigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RegistroRethus = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Genero = table.Column<int>(type: "int", nullable: false)
+                    Genero = table.Column<int>(type: "int", nullable: false),
+                    Especialidad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Codigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RegistroRethus = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Medicos", x => x.Id);
+                    table.PrimaryKey("PK_Medicos", x => x.IdMedico);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rol = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastLoginDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SugerenciasCuidado",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    IdSugerenciaCuidado = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FechaHora = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HistoriaId = table.Column<int>(type: "int", nullable: true)
+                    HistoriaIdHistoria = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SugerenciasCuidado", x => x.Id);
+                    table.PrimaryKey("PK_SugerenciasCuidado", x => x.IdSugerenciaCuidado);
                     table.ForeignKey(
-                        name: "FK_SugerenciasCuidado_Historias_HistoriaId",
-                        column: x => x.HistoriaId,
+                        name: "FK_SugerenciasCuidado_Historias_HistoriaIdHistoria",
+                        column: x => x.HistoriaIdHistoria,
                         principalTable: "Historias",
-                        principalColumn: "Id");
+                        principalColumn: "IdHistoria");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Pacientes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    IdPaciente = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HistoriaId = table.Column<int>(type: "int", nullable: false),
-                    FamiliarDesignadoId = table.Column<int>(type: "int", nullable: false),
-                    EnfermeraId = table.Column<int>(type: "int", nullable: false),
-                    MedicoId = table.Column<int>(type: "int", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Genero = table.Column<int>(type: "int", nullable: false),
+                    IdHistoria = table.Column<int>(type: "int", nullable: false),
+                    IdFamiliarDesignado = table.Column<int>(type: "int", nullable: false),
+                    IdEnfermera = table.Column<int>(type: "int", nullable: false),
+                    IdMedico = table.Column<int>(type: "int", nullable: false),
                     Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Latitud = table.Column<float>(type: "real", nullable: true),
                     Longitud = table.Column<float>(type: "real", nullable: true),
                     Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Genero = table.Column<int>(type: "int", nullable: false)
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pacientes", x => x.Id);
+                    table.PrimaryKey("PK_Pacientes", x => x.IdPaciente);
                     table.ForeignKey(
-                        name: "FK_Pacientes_Enfermeras_EnfermeraId",
-                        column: x => x.EnfermeraId,
+                        name: "FK_Pacientes_Enfermeras_IdEnfermera",
+                        column: x => x.IdEnfermera,
                         principalTable: "Enfermeras",
-                        principalColumn: "Id",
+                        principalColumn: "IdEnfermera",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pacientes_FamiliaresDesignados_FamiliarDesignadoId",
-                        column: x => x.FamiliarDesignadoId,
+                        name: "FK_Pacientes_FamiliaresDesignados_IdFamiliarDesignado",
+                        column: x => x.IdFamiliarDesignado,
                         principalTable: "FamiliaresDesignados",
-                        principalColumn: "Id",
+                        principalColumn: "IdFamiliarDesignado",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pacientes_Historias_HistoriaId",
-                        column: x => x.HistoriaId,
+                        name: "FK_Pacientes_Historias_IdHistoria",
+                        column: x => x.IdHistoria,
                         principalTable: "Historias",
-                        principalColumn: "Id",
+                        principalColumn: "IdHistoria",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pacientes_Medicos_MedicoId",
-                        column: x => x.MedicoId,
+                        name: "FK_Pacientes_Medicos_IdMedico",
+                        column: x => x.IdMedico,
                         principalTable: "Medicos",
-                        principalColumn: "Id",
+                        principalColumn: "IdMedico",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -151,52 +169,46 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                 name: "SignosVitales",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdSignoVital = table.Column<int>(type: "int", nullable: false),
                     FechaHora = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Valor = table.Column<float>(type: "real", nullable: false),
-                    Signo = table.Column<int>(type: "int", nullable: false),
-                    PacienteId = table.Column<int>(type: "int", nullable: true)
+                    Signo = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SignosVitales", x => x.Id);
+                    table.PrimaryKey("PK_SignosVitales", x => x.IdSignoVital);
                     table.ForeignKey(
-                        name: "FK_SignosVitales_Pacientes_PacienteId",
-                        column: x => x.PacienteId,
+                        name: "FK_SignosVitales_Pacientes_IdSignoVital",
+                        column: x => x.IdSignoVital,
                         principalTable: "Pacientes",
-                        principalColumn: "Id");
+                        principalColumn: "IdPaciente",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pacientes_EnfermeraId",
+                name: "IX_Pacientes_IdEnfermera",
                 table: "Pacientes",
-                column: "EnfermeraId");
+                column: "IdEnfermera");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pacientes_FamiliarDesignadoId",
+                name: "IX_Pacientes_IdFamiliarDesignado",
                 table: "Pacientes",
-                column: "FamiliarDesignadoId");
+                column: "IdFamiliarDesignado");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pacientes_HistoriaId",
+                name: "IX_Pacientes_IdHistoria",
                 table: "Pacientes",
-                column: "HistoriaId");
+                column: "IdHistoria");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pacientes_MedicoId",
+                name: "IX_Pacientes_IdMedico",
                 table: "Pacientes",
-                column: "MedicoId");
+                column: "IdMedico");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SignosVitales_PacienteId",
-                table: "SignosVitales",
-                column: "PacienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SugerenciasCuidado_HistoriaId",
+                name: "IX_SugerenciasCuidado_HistoriaIdHistoria",
                 table: "SugerenciasCuidado",
-                column: "HistoriaId");
+                column: "HistoriaIdHistoria");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -206,6 +218,9 @@ namespace HospiEnCasa.App.Persistencia.Migrations
 
             migrationBuilder.DropTable(
                 name: "SugerenciasCuidado");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Pacientes");

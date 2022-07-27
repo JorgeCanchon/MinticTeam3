@@ -21,7 +21,7 @@ namespace HospiEnCasa.App.Web.Pages
 
         public void OnGet(int id)
         {
-            PacientesAsignados = _repositorioPaciente.FindByCondition(p => p.Medico.Id == id);
+            PacientesAsignados = _repositorioPaciente.FindByCondition(p => p.Medico.IdMedico == id);
         }
     }
 }
