@@ -5,5 +5,6 @@ namespace HospiEnCasa.App.Persistencia
 {
     public interface IRepositorioPaciente : IRepositorioBase<Paciente>
     {
+        Paciente ConsultarPacienteConSignosVitales(int? idPaciente);
     }
 }

@@ -1,15 +1,17 @@
 @page
 @model HospiEnCasa.App.Web.Pages.AddUpdatePacienteModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
   <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
 }
+
 <div class="containerForm">
   <div class="title">@ViewData["TitlePage"]</div>
   <div class="content">
     <div class="row">
       <p class="text-danger">@Model.ErrorMessage</p>
     </div>
-    <form method="post">
+    <form method="post" name="formularioPaciente">
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -207,39 +209,6 @@
                   <span class="details" for="nombre">Diagnostico</span>
                   <textarea asp-for="Historia.Diagnostico"></textarea>
                   <span clas="text-danger" asp-validation-for="Historia.Diagnostico"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              Signos vitales
-            </button>
-          </h2>
-          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <div class="user-details">
-                <div class="input-box">
-                  <span class="details" for="fechaHora">Fecha y hora</span>
-                  <input type="datetime-local" id="FechaHora" asp-for="SignoVital.FechaHora" placeholder="Ingrese fecha de la toma" required>
-                  <span class="text-danger" asp-validation-for="SignoVital.FechaHora"></span>
-                </div>
-                <div class="input-box">
-                  <span class="details" for="valor">Valores tomados</span>
-                  <input type="text" id="valor" asp-for="SignoVital.Valor" placeholder="Valor tomado" required>
-                  <span class="text-danger" asp-validation-for="SignoVital.Valor"></span>
-                </div>
-                <div class="input-box">
-                  <select class="details" name="signo" multiple="yes" size="5" id="Signo" asp-for="SignoVital.Signo">
-                    <option value="1">Tensión arterial</option>
-                    <option value="2">Frecuencia cardiaca</option>
-                    <option value="3">Frecuencia respiratoria</option>
-                    <option value="4">Saturación de oxigeno</option>
-                    <option value="5">Temperatura Corporal</option>
-                  </select>
-                  <span class="text-danger" asp-validation-for="SignoVital.Signo"></span>
                 </div>
               </div>
             </div>

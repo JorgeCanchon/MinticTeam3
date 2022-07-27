@@ -38,53 +38,29 @@ namespace HospiEnCasa.App.Web.Pages
 
         public IActionResult OnPost()
         {
-            Func<IActionResult> function;
+            Func<string, bool, IActionResult> function = (string message, bool isCreate) =>
+           {
+               var familiar = isCreate ? _repositorioFamiliarDesignado.Create(FamiliarDesignado) : _repositorioFamiliarDesignado.Update(FamiliarDesignado);
+               if (familiar.IdFamiliarDesignado > 0)
+                   return RedirectToPage("/FamiliarDesignado/Index");
 
-            if (FamiliarDesignado.IdFamiliarDesignado > 0)
-            {
-                function = () =>
-                {
-                    var familiar = _repositorioFamiliarDesignado.Update(FamiliarDesignado);
-                    if (familiar.IdFamiliarDesignado > 0) 
-                        return RedirectToPage("/FamiliarDesignado/Index");
+               ErrorMessage = message;
 
-                ErrorMessage = message;
-
-                    return Page();
-                };
-            }
-            else
-            {
-                function = () =>
-                {
-                    var familiar = _repositorioFamiliarDesignado.Create(FamiliarDesignado);
-                    if (familiar.IdFamiliarDesignado > 0) 
-                        return RedirectToPage("/FamiliarDesignado/Index");
-
-                    ErrorMessage = "No se pudo insertar familiar";
-                    
-                    return Page();
-                };
-            }
+               return Page();
+           };
 
             try
             {
-                if (ModelState.IsValid)
+                if (FamiliarDesignado.IdFamiliarDesignado > 0)
                 {
-                    if (FamiliarDesignado.Id > 0)
-                    {
-                        return function("No se pudo actualizar el familiar", false); 
-                    }
-
-                    return function("No se pudo insertar familiar", true); 
+                    return function("No se pudo actualizar el familiar", false);
                 }
 
-                ErrorMessage = "Modelo inválido por favor intente de nuevo";
-
+                return function("No se pudo insertar familiar", true);
             }
             catch (Exception exception)
             {
-                ErrorMessage = "Error " + exception.Message;
+                ErrorMessage = "Error " + exception.Message + "\n" + exception.InnerException?.Message ?? string.Empty;
             }
 
             return Page();

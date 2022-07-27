@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using HospiEnCasa.App.Persistencia;
 using HospiEnCasa.App.Dominio;
 using System;
+using System.Linq;
 using System.Collections;
 
 namespace HospiEnCasa.App.Web.Pages
@@ -17,19 +18,19 @@ namespace HospiEnCasa.App.Web.Pages
         [BindProperty]
         public Dominio.Paciente Paciente { get; set; }
         [BindProperty]
-        public Dominio.FamiliarDesignado FamiliarDesignado {get;set;}
+        public Dominio.FamiliarDesignado FamiliarDesignado { get; set; }
+        [BindProperty]
+        public List<Dominio.FamiliarDesignado> FamiliaresDesignados { get; set; }
         [BindProperty]
         public List<Dominio.Medico> Medicos { get; set; }
         [BindProperty]
-        public Dominio.Medico Medico {get;set;}
+        public Dominio.Medico Medico { get; set; }
         [BindProperty]
-        public List<Dominio.Enfermera> Enfermeras {get;set;}
+        public List<Dominio.Enfermera> Enfermeras { get; set; }
         [BindProperty]
-        public Dominio.Enfermera Enfermera {get;set;}
+        public Dominio.Enfermera Enfermera { get; set; }
         [BindProperty]
         public Dominio.Historia Historia { get; set; }
-        [BindProperty]
-        public Dominio.SignoVital SignoVital { get; set; }
 
         public string ErrorMessage { get; set; }
 
@@ -44,9 +45,7 @@ namespace HospiEnCasa.App.Web.Pages
 
         public IActionResult OnGet(int? id)
         {
-            Medicos = _repositorioMedico.FindAll().ToList();
-            Enfermeras = _repositorioEnfermera.FindAll().ToList();
-
+            FillSelects();
             ViewData["TitlePage"] = "Registrar Paciente";
             if (id.HasValue)
             {
@@ -64,50 +63,22 @@ namespace HospiEnCasa.App.Web.Pages
 
         public IActionResult OnPost()
         {
-            Func<IActionResult> function;
 
-            if (Paciente.IdPaciente > 0)
+            Func<string, bool, IActionResult> function = (string message, bool isCreate) =>
             {
-                function = () =>
-                {
-                    var paciente = _repositorioPaciente.Update(Paciente);
-                    var familiarDesignado = _repositorioFamiliarDesignado.Update(FamiliarDesignado);
-                    
-                    if (paciente.IdPaciente > 0 && familiarDesignado.IdFamiliarDesignado > 0) 
-                        return RedirectToPage("/Pacientes/Index");
+                var paciente = isCreate ? _repositorioPaciente.Create(Paciente) : _repositorioPaciente.Update(Paciente);
+                if (paciente.IdPaciente > 0)
+                    return RedirectToPage("/Pacientes/Index");
 
                 ErrorMessage = message;
 
-                    return Page();
-                };
-            }
-            else
-            {
-                function = () =>
-                {
-                    Paciente.IdPaciente = null;
-                    Paciente.Medico = _repositorioMedico.FindById(Medico.IdMedico ?? 0);
-                    Paciente.Enfermera = _repositorioEnfermera.FindById(Enfermera.IdEnfermera ?? 0);
-                    Paciente.Historia = Historia;
-                    Paciente.FamiliarDesignado = FamiliarDesignado;
-                    Paciente.SignoVitales = new List<Dominio.SignoVital>()
-                    {
-                        SignoVital
-                    };
-
-                    var paciente = _repositorioPaciente.Create(Paciente);
-                    if (paciente.IdPaciente > 0) 
-                        return RedirectToPage("/Pacientes/Index");
-
-                    ErrorMessage = "No se pudo insertar paciente";
-                    
-                    return Page();
-                };
-            }
+                return Page();
+            };
 
             try
             {
-                if (ModelState.IsValid)
+
+                if (Paciente.IdPaciente > 0)
                 {
                     return function("No se pudo actualizar el paciente", false);
                 }

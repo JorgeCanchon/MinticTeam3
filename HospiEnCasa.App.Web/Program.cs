@@ -11,6 +11,7 @@ builder.Services.AddScoped<IRepositorioMedico, RepositorioMedico>();
 builder.Services.AddScoped<IRepositorioEnfermera, RepositorioEnfermera>();
 builder.Services.AddScoped<IRepositorioUsuario,RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioHistoria, RepositorioHistoria>();
+builder.Services.AddScoped<IRepositorioSignosVitales, RepositorioSignosVitales>();
 
 var app = builder.Build();
 
