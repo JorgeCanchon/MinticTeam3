@@ -38,16 +38,34 @@ namespace HospiEnCasa.App.Web.Pages
 
         public IActionResult OnPost()
         {
-            Func<string, bool, IActionResult> function = (string message, bool isCreate) =>
+            Func<IActionResult> function;
+
+            if (FamiliarDesignado.IdFamiliarDesignado > 0)
             {
-                var familiar = isCreate ? _repositorioFamiliarDesignado.Create(FamiliarDesignado) : _repositorioFamiliarDesignado.Update(FamiliarDesignado);
-                if (familiar.Id > 0)
-                    return RedirectToPage("/FamiliarDesignado/Index");
+                function = () =>
+                {
+                    var familiar = _repositorioFamiliarDesignado.Update(FamiliarDesignado);
+                    if (familiar.IdFamiliarDesignado > 0) 
+                        return RedirectToPage("/FamiliarDesignado/Index");
 
                 ErrorMessage = message;
 
-                return Page();
-            };
+                    return Page();
+                };
+            }
+            else
+            {
+                function = () =>
+                {
+                    var familiar = _repositorioFamiliarDesignado.Create(FamiliarDesignado);
+                    if (familiar.IdFamiliarDesignado > 0) 
+                        return RedirectToPage("/FamiliarDesignado/Index");
+
+                    ErrorMessage = "No se pudo insertar familiar";
+                    
+                    return Page();
+                };
+            }
 
             try
             {

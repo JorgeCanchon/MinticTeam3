@@ -4,9 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospiEnCasa.App.Dominio
 {
-    public class FamiliarDesignado : Persona
+    public class FamiliarDesignado
     {
-        public int? Id { get; set; }
+        [Key]
+        public int? IdFamiliarDesignado { get; set; }
+        [Required]
+        [Display(Prompt = "Ingrese nombre")]
+        public string Nombre { get; set; }
+        [Required]
+        public string Apellidos { get; set; }
+        [Required]
+        public string Telefono { get; set; }
+        [Required]
+        public Genero Genero { get; set; }
         public string Parentesco { get; set; }
         public string Correo { get; set; }
     }

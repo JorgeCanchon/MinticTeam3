@@ -6,8 +6,8 @@ namespace HospiEnCasa.App.Dominio
 {
     public class SugerenciaCuidado
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? Id { get; set; }
+        [Key]
+        public int IdSugerenciaCuidado { get; set; }
         public DateTime FechaHora { get; set; }
         public string Descripcion { get; set; }
     }

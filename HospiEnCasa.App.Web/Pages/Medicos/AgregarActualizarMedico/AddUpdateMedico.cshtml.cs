@@ -40,12 +40,12 @@ namespace HospiEnCasa.App.Web.Pages
         {
             Func<IActionResult> function;
 
-            if (Medico.Id > 0)
+            if (Medico.IdMedico > 0)
             {
                 function = () =>
                 {
                     var medico = _repositorioMedico.Update(Medico);
-                    if (medico.Id > 0) 
+                    if (medico.IdMedico > 0) 
                         return RedirectToPage("/Medicos/Index");
 
                     ErrorMessage = "No se pudo actualizar el medico";
@@ -58,7 +58,7 @@ namespace HospiEnCasa.App.Web.Pages
                 function = () =>
                 {
                     var medico = _repositorioMedico.Create(Medico);
-                    if (medico.Id > 0) 
+                    if (medico.IdMedico > 0) 
                         return RedirectToPage("/Medicos/Index");
 
                     ErrorMessage = "No se pudo insertar medico";

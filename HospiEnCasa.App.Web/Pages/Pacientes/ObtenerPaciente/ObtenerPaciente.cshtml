@@ -6,11 +6,11 @@
 
 <div class="container">
   <div class="card">
-    <img src="~/lib/Images/Paciente.png" />
+    @* <img src="~/lib/Images/Paciente.png" /> *@
     <h4>@Model.Paciente.Nombre @Model.Paciente.Apellidos</h4>
     <p>Cel: @Model.Paciente.Telefono</p>
     <p>@Model.Paciente.Genero</p>
-    <a asp-page="../AgregarActualizarPaciente/AddUpdatePaciente" asp-route-id="@Model.Paciente.Id">Editar</a>
-    <a asp-page="../BorrarPaciente/DeletePaciente" asp-route-id="@Model.Paciente.Id">Eliminar</a>
+    <a asp-page="../AgregarActualizarPaciente/AddUpdatePaciente" asp-route-id="@Model.Paciente.IdPaciente">Editar</a>
+    <a asp-page="../BorrarPaciente/DeletePaciente" asp-route-id="@Model.Paciente.IdPaciente">Eliminar</a>
   </div>
 </div>

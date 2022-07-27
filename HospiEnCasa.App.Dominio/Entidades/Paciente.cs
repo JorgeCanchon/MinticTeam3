@@ -5,18 +5,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospiEnCasa.App.Dominio
 {
-    public class Paciente : Persona
+    public class Paciente
     {
-        public int? Id { get; set; }
-        [ForeignKey("Id")]
+        [Key]
+        public int? IdPaciente { get; set; }
+        [Required]
+        [Display(Prompt = "Ingrese nombre")]
+        public string Nombre { get; set; }
+        [Required]
+        public string Apellidos { get; set; }
+        [Required]
+        public string Telefono { get; set; }
+        [Required]
+        public Genero Genero { get; set; }
+        [ForeignKey("IdHistoria")]
         public Historia Historia { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdSignoVital")]
         public List<SignoVital> SignoVitales { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdFamiliarDesignado")]
         public FamiliarDesignado FamiliarDesignado { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdEnfermera")]
         public Enfermera Enfermera { get; set; }
-        [ForeignKey("Id")]
+        [ForeignKey("IdMedico")]
         public Medico Medico { get; set; }
         public string Direccion { get; set; }
         public float? Latitud { get; set; }

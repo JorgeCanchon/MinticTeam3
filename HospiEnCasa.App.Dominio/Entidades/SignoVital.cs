@@ -6,8 +6,8 @@ namespace HospiEnCasa.App.Dominio
 {
     public class SignoVital
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int? Id { get; set; }
+        [Key]
+        public int IdSignoVital { get; set; }
         public DateTime FechaHora { get; set; }
         public float Valor { get; set; }
         public TipoSigno Signo { get; set; }
