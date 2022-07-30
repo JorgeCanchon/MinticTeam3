@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using System.Collections;
 
-
 namespace HospiEnCasa.App.Web.Pages
 {
     public class AddUpdateSignosVitalesModel : PageModel

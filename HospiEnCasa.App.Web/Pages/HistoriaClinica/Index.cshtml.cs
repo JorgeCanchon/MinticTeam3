@@ -4,12 +4,12 @@ using HospiEnCasa.App.Persistencia;
 using HospiEnCasa.App.Dominio;
 using System.Linq;
 
-namespace HospiEnCasa.App.Web.Pages.SignosVitales
+namespace HospiEnCasa.App.Web.Pages.HistoriaClinica
 {
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public Dominio.Paciente Paciente { get; set; }
+        public List<Dominio.Paciente> Paciente { get; set; }
 
         private readonly IRepositorioPaciente _repositorioPaciente;
 
@@ -18,17 +18,9 @@ namespace HospiEnCasa.App.Web.Pages.SignosVitales
             _repositorioPaciente = repositorioPaciente ?? throw new ArgumentNullException(nameof(repositorioPaciente));
         }
         
-        public IActionResult OnGet(int? id)
+        public IActionResult OnGet()
         {
-            if (id.HasValue)
-            {
-                Paciente = _repositorioPaciente.ConsultarPacienteConSignosVitales(id.Value);
-
-                if (Paciente == null)
-                {
-                    return RedirectToPage("../Pacientes/Index");
-                }
-            }
+            Paciente = _repositorioPaciente.ConsultarPacientesConHistoriaClinica();
             return Page();
         }
     }

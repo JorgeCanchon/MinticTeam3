@@ -14,6 +14,7 @@ builder.Services.AddScoped<IRepositorioEnfermera, RepositorioEnfermera>();
 builder.Services.AddScoped<IRepositorioUsuario,RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioHistoria, RepositorioHistoria>();
 builder.Services.AddScoped<IRepositorioSignosVitales, RepositorioSignosVitales>();
+builder.Services.AddScoped<IRepositorioSugerenciaCuidado, RepositorioSugerenciaCuidado>();
 
 builder.Services.AddSession(options => 
 {

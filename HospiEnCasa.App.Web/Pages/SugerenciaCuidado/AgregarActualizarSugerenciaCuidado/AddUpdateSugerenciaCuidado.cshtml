@@ -1,0 +1,32 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.AddUpdateSugerenciaCuidadoModel
+@{
+  <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
+}
+<div class="containerForm">
+  <div class="title">@ViewData["TitlePage"]</div>
+  <div class="content">
+    <div class="row">
+      <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" for="nombre">Fecha y Hora</span>
+          <input type="hidden" id="id" asp-for="SugerenciaCuidado.IdSugerenciaCuidado" />
+          <input type="hidden" id="idPaciente" asp-for="SugerenciaCuidado.HistoriaIdHistoria" />
+          <input type="datetime-local" id="fechaHora" asp-for="SugerenciaCuidado.FechaHora" placeholder="Ingrese fecha hora" />
+          <span class="text-danger" asp-validation-for="SugerenciaCuidado.FechaHora"></span>
+        </div>
+        <div class="input-box">
+            <span class="details" for="nombre">Descripcion</span>
+            <textarea asp-for="SugerenciaCuidado.Descripcion"></textarea>
+            <span clas="text-danger" asp-validation-for="SugerenciaCuidado.Descripcion"></span>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Enviar">
+      </div>
+    </form>
+  </div>
+</div>
