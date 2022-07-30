@@ -1,4 +1,6 @@
 using HospiEnCasa.App.Persistencia;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -7,37 +9,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<HospiEnCasa.App.Persistencia.AppContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddRoles<IdentityRole>().AddEntityFrameworkStores<HospiEnCasa.App.Persistencia.AppContext>();
+builder.Services.ConfigureApplicationCookie(config =>
+{
+    config.LoginPath = "/Login";
+    config.AccessDenied = "/"
+});
 builder.Services.AddScoped<IRepositorioPaciente, RepositorioPaciente>();
 builder.Services.AddScoped<IRepositorioFamiliarDesignado, RepositorioFamiliarDesignado>();
 builder.Services.AddScoped<IRepositorioMedico, RepositorioMedico>();
 builder.Services.AddScoped<IRepositorioEnfermera, RepositorioEnfermera>();
-builder.Services.AddScoped<IRepositorioUsuario,RepositorioUsuario>();
 builder.Services.AddScoped<IRepositorioHistoria, RepositorioHistoria>();
 builder.Services.AddScoped<IRepositorioSignosVitales, RepositorioSignosVitales>();
 
-builder.Services.AddSession(options => 
-{
-  options.IdleTimeout = TimeSpan.FromMinutes(30);
-});
-
-builder.Services.AddDistributedMemoryCache();
-
-builder.Services.AddHttpContextAccessor();
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-  .AddCookie(options =>
-  {
-    options.LoginPath = "/Login/Login";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-    options.AccessDeniedPath = "/Login/Denied";
-  });
-
-builder.Services.AddMvc();
-
 var app = builder.Build();
-
-app.UseCookiePolicy();
-app.UseAuthentication();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -52,11 +37,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
-// app.UseAuthentication();
-
-app.UseSession();
 
 app.MapRazorPages();
 

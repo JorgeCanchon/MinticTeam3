@@ -29,9 +29,6 @@ namespace HospiEnCasa.App.Persistencia
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) =>
             Context.Set<T>().Where(expression).AsNoTracking();
 
-        public T FindByConditionSingle(Expression<Func<T, bool>> expression) =>
-            Context.Set<T>().SingleOrDefault(expression);
-            
         public T FindById(int id) =>
             Context.Set<T>().Find(id);
             

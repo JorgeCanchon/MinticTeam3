@@ -19,18 +19,18 @@ namespace HospiEnCasa.App.Dominio
         [Required]
         public Genero Genero { get; set; }
         [ForeignKey("IdHistoria")]
-        public Historia Historia { get; set; }
+        public Historia? Historia { get; set; }
         public int? IdHistoria { get; set; }
         [ForeignKey("IdSignoVital")]
         public List<SignoVital> SignoVitales { get; set; }
         [ForeignKey("IdFamiliarDesignado")]
-        public FamiliarDesignado FamiliarDesignado { get; set; }
+        public FamiliarDesignado? FamiliarDesignado { get; set; }
          public int? IdFamiliarDesignado { get; set; }
         [ForeignKey("IdEnfermera")]
-        public Enfermera Enfermera { get; set; }
+        public Enfermera? Enfermera { get; set; }
         public int? IdEnfermera { get; set; }
         [ForeignKey("IdMedico")]
-        public Medico Medico { get; set; }
+        public Medico? Medico { get; set; }
         public int? IdMedico { get; set; }
         [Required]
         public string Direccion { get; set; }

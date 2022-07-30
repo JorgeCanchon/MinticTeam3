@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using HospiEnCasa.App.Persistencia;
@@ -6,6 +7,7 @@ using System.Linq;
 
 namespace HospiEnCasa.App.Web.Pages.Pacientes
 {
+    [Authorize(Roles = "Medico")]
     public class IndexModel : PageModel
     {
         private readonly IRepositorioPaciente _repositorioPaciente;
