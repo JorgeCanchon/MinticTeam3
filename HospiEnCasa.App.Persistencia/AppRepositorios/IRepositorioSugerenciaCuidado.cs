@@ -8,8 +8,8 @@ using System.Text;
 
 namespace HospiEnCasa.App.Persistencia
 {
-  public interface IRepositorioHistoria : IRepositorioBase<Historia>
-  {
-    Historia ConsultarHistoriaConSugerenciaCuidado(int? idHistoria);
-  }
+    public interface IRepositorioSugerenciaCuidado : IRepositorioBase<SugerenciaCuidado>
+    {
+      
+    }
 }

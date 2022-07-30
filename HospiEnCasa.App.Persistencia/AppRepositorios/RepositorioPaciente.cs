@@ -18,9 +18,10 @@ namespace HospiEnCasa.App.Persistencia
             _db = db;
         }
 
-        public Paciente ConsultarPacienteConSignosVitales(int? idPaciente)
-        {
-            return _db.Pacientes.Where(x => x.IdPaciente == idPaciente).Include(x => x.SignoVitales).FirstOrDefault();
-        }
+        public Paciente ConsultarPacienteConSignosVitales(int? idPaciente) =>
+            _db.Pacientes.Where(x => x.IdPaciente == idPaciente).Include(x => x.SignoVitales).FirstOrDefault();
+
+        public List<Paciente> ConsultarPacientesConHistoriaClinica() => 
+            _db.Pacientes.Include(x => x.Historia).ToList();
     }
 }

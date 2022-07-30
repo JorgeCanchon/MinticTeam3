@@ -13,7 +13,7 @@ namespace HospiEnCasa.App.Web.Pages.FamiliarDesignado
 
         public IndexModel(IRepositorioFamiliarDesignado repositorioFamiliarDesignado)
         {
-            _repositorioFamiliarDesignado = repositorioFamiliarDesignado;
+            _repositorioFamiliarDesignado = repositorioFamiliarDesignado ?? throw new ArgumentNullException(nameof(repositorioFamiliarDesignado));
         }
 
         public void OnGet()
