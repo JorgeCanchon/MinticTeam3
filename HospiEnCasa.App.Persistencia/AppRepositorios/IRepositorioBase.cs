@@ -15,5 +15,6 @@ namespace HospiEnCasa.App.Persistencia
         T Create(T entity);
         T Update(T entity);
         T Delete(int id);
+        T Delete2(T entity);
     }
 }

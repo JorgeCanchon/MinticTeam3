@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace HospiEnCasa.App.Web.Pages.Pacientes
 {
-    [Authorize(Roles = "Medico")]
+    // [Authorize(Roles = "Medico")]
     public class IndexModel : PageModel
     {
         private readonly IRepositorioPaciente _repositorioPaciente;

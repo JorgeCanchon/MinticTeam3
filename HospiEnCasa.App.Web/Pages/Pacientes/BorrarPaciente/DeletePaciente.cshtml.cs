@@ -34,7 +34,7 @@ namespace HospiEnCasa.App.Web.Pages.Pacientes
             try
             {
                 if(Paciente != null){
-                    _repositorioPaciente.Delete(id);
+                    _repositorioPaciente.Delete2(Paciente);
                     return RedirectToPage("/Pacientes/Index");
                 }
 

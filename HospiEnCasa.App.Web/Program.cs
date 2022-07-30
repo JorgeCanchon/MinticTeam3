@@ -13,7 +13,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddRoles<IdentityRole
 builder.Services.ConfigureApplicationCookie(config =>
 {
     config.LoginPath = "/Login";
-    config.AccessDenied = "/"
+    // config.AccessDeniedPath = new PathString("AccessDenied");
 });
 builder.Services.AddScoped<IRepositorioPaciente, RepositorioPaciente>();
 builder.Services.AddScoped<IRepositorioFamiliarDesignado, RepositorioFamiliarDesignado>();

@@ -51,5 +51,13 @@ namespace HospiEnCasa.App.Persistencia
 
             return entity;
         }
+
+        public T Delete2(T entity)
+        {
+            Context.Attach(entity);
+            Context.Entry(entity).State = EntityState.Deleted;
+            Context.SaveChanges();
+            return entity;
+        }
     }
 }
