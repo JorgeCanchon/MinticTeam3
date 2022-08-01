@@ -1,12 +1,13 @@
 using System;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
 using HospiEnCasa.App.Dominio;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace HospiEnCasa.App.Persistencia
 {
-    public class AppContext : DbContext
+    public class AppContext : IdentityDbContext
     {
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Medico> Medicos { get; set; }
@@ -15,7 +16,6 @@ namespace HospiEnCasa.App.Persistencia
         public DbSet<SignoVital> SignosVitales { get; set; }
         public DbSet<SugerenciaCuidado> SugerenciasCuidado { get; set; }
         public DbSet<Enfermera> Enfermeras { get; set; }
-        public DbSet<Usuario> Usuarios {get;set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,10 +27,10 @@ namespace HospiEnCasa.App.Persistencia
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-           builder.Entity<SignoVital>()
-            .HasOne<Paciente>(s => s.Paciente)
-            .WithMany(p => p.SignoVitales)
-            .HasForeignKey(s => s.IdPaciente);
+            builder.Entity<SignoVital>()
+                .HasOne<Paciente>(s => s.Paciente)
+                .WithMany(p => p.SignoVitales)
+                .HasForeignKey(s => s.IdPaciente);
             
             builder.HasAnnotation("Sqlite:Autoincement", true)
                 .HasAnnotation("MySql:ValueGeneratedOnAdd", true)

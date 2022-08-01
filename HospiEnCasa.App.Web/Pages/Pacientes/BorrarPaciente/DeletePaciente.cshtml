@@ -11,9 +11,10 @@
             <legend>Confirmar Eliminación</legend>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">@Model.Paciente.Nombre @Model.Paciente.Apellidos</h5>
+                    <input type="hidden" id="idPaciente" asp-for="Paciente.IdPaciente" />
+                    @* <h5 class="card-title">@Model.Paciente.Nombre @Model.Paciente.Apellidos</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@Model.Paciente.Telefono</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">@Model.Paciente.Genero</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.Paciente.Genero</h6> *@
                     <p class="card-text">¿Esta seguro de eliminar este paciente? </p>
                     <div>
                         <form method="post">

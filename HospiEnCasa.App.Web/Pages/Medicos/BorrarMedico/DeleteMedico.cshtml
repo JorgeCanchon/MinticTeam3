@@ -11,6 +11,7 @@
             <legend>Confirmar Eliminación</legend>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
+                    <input type="hidden" id="idMedico" asp-for="Medico.IdMedico" />
                     <h5 class="card-title">@Model.Medico.Nombre @Model.Medico.Apellidos</h5>
                     <h6 class="card-subtitle mb-2 text-muted">@Model.Medico.Especialidad</h6>
                     <h6 class="card-subtitle mb-2 text-muted">@Model.Medico.Codigo</h6>

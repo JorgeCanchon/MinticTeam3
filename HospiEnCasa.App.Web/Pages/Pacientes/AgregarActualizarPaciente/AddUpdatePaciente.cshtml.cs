@@ -24,11 +24,7 @@ namespace HospiEnCasa.App.Web.Pages
         [BindProperty]
         public List<Dominio.Medico> Medicos { get; set; }
         [BindProperty]
-        public Dominio.Medico Medico { get; set; }
-        [BindProperty]
         public List<Dominio.Enfermera> Enfermeras { get; set; }
-        [BindProperty]
-        public Dominio.Enfermera Enfermera { get; set; }
         [BindProperty]
         public Dominio.Historia Historia { get; set; }
 
@@ -50,8 +46,8 @@ namespace HospiEnCasa.App.Web.Pages
             if (id.HasValue)
             {
                 Paciente = _repositorioPaciente.FindById(id.Value);
-                // FamiliarDesignado = _repositorioFamiliarDesignado.FindById(1);
-                // Historia = _repositorioHistoria.FindById(Paciente.);
+                FamiliarDesignado = _repositorioFamiliarDesignado.FindById(Paciente.IdFamiliarDesignado.Value);
+                Historia = _repositorioHistoria.FindById(Paciente.IdHistoria.Value);
 
                 if (Paciente == null)
                 {
@@ -67,11 +63,19 @@ namespace HospiEnCasa.App.Web.Pages
 
             Func<string, bool, IActionResult> function = (string message, bool isCreate) =>
             {
-                var paciente = isCreate ? _repositorioPaciente.Create(Paciente) : _repositorioPaciente.Update(Paciente);
-                if (paciente.IdPaciente > 0)
-                    return RedirectToPage("/Pacientes/Index");
-                        
+                if(isCreate)
+                {
+                    var paciente = _repositorioPaciente.Create(Paciente);
+                }
+                else if(!isCreate)
+                {
+                    var paciente = _repositorioPaciente.Update(Paciente);
+
+                    if (paciente.IdPaciente > 0)
+                        return RedirectToPage("/Pacientes/Index");
+                            
                     ErrorMessage = "No se pudo actualizar el paciente";
+                }
 
                 return Page();
             };
@@ -85,7 +89,6 @@ namespace HospiEnCasa.App.Web.Pages
                 {
                     return function("No se pudo actualizar el paciente", false);
                 }
-
                 return function("No se pudo insertar el paciente", true);
             }
             catch (Exception exception)

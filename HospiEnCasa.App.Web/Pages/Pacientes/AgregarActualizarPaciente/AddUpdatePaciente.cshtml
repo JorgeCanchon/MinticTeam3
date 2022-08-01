@@ -24,11 +24,7 @@
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">Nombre</span>
-                  @* <input type="hidden" id="idPaciente" asp-for="Paciente.IdPaciente" /> *@
-                  @if(Model.Paciente != null)
-                  {
-                    @:<input type="hidden" id="idPaciente" asp-for="Paciente.IdPaciente" />
-                  }
+                  <input type="hidden" id="idPaciente" asp-for="Paciente.IdPaciente" />
                   <input type="text" id="nombre" asp-for="Paciente.Nombre" placeholder="Ingrese su nombre" required />
                   <span class="text-danger" asp-validation-for="Paciente.Nombre"></span>
                 </div>
@@ -101,7 +97,7 @@
               <div class="user-details">
                 <div class="input-box">
                   <span class="details" for="nombre">Nombre</span>
-                  <input type="hidden" id="idFamiliarDesignado" asp-for="FamiliarDesignado.IdFamiliarDesignado" />
+                  <input type="hidden" id="idFamiliarDesignado" asp-for="Paciente.IdFamiliarDesignado" />
                   <input type="text" id="nombre" asp-for="FamiliarDesignado.Nombre" placeholder="Ingrese su nombre" />
                   <span clas="text-danger" asp-validation-for="FamiliarDesignado.Nombre"></span>
                 </div>
@@ -149,6 +145,7 @@
               <div class="user-details">
                 <div class="input-box">
                   <span class="details" for="nombre">Entorno</span>
+                  <input type="hidden" id="idHistoria" asp-for="Paciente.IdHistoria" />
                   <input type="text" id="entorno" asp-for="Historia.Entorno" placeholder="Ingrese entorno" />
                   <span clas="text-danger" asp-validation-for="Historia.Entorno"></span>
                 </div>

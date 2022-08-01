@@ -12,10 +12,7 @@
     <form method="post">
       <div class="user-details">
         <div class="input-box">
-          @if(Model.Medico != null)
-          {
-            @:<input type="hidden" id="idMedico" asp-for="Medico.IdMedico" />
-          }
+          <input type="hidden" id="idMedico" asp-for="Medico.IdMedico" />
           <span class="details" for="nombre">Nombre</span>
           <input type="text" id="nombre" asp-for="Medico.Nombre" placeholder="Ingrese su nombre" />
           <span class="text-danger" asp-validation-for="Medico.Nombre"></span>
