@@ -1,0 +1,47 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.HistoriaClinica.IndexModel
+@{
+
+}
+
+@if (Model.Paciente != null)
+{
+    <h1 class="title">Historias Clinicas</h1>
+    <table class="table display" id="tableHistoriaClinica">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Entorno</th>
+                <th>Diagnostico</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var paciente in Model.Paciente)
+            {
+                <tr>
+                    <td>@paciente.Nombre @paciente.Apellidos</td>
+                    <td>@paciente.Historia.Entorno</td>
+                    <td>@paciente.Historia.Diagnostico</td>
+                    <td>
+                        <a class="btn btn-warning table-btn"
+                    asp-page="./AgregarActualizarHistoriaClinica/AddUpdateHistoriaClinica"
+                    asp-route-id="@paciente.Historia.IdHistoria">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-primary table-btn" asp-page="../SugerenciaCuidado/Index"
+                    asp-route-id="@paciente.Historia.IdHistoria">
+                            Sugerencias
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>
+        <a class="btn btn-outline-primary" asp-page="../Pacientes/Index">Regresar</a>
+    </div>
+}

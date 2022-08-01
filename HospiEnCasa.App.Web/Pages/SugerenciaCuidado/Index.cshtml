@@ -1,0 +1,44 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.SugerenciaCuidado.IndexModel
+@{
+}
+@if (Model.Historia != null)
+{
+<div class="d-flex flex-column align-items-end">
+    <a class="btn btn-outline-primary" asp-page="./AgregarActualizarSugerenciaCuidado/AddUpdateSugerenciaCuidado" asp-route-idHistoria="@Model.Historia.IdHistoria">Registrar nueva sugerencia</a>
+</div>
+<h1 class="title">Sugerencia cuidado @Model.Historia.Entorno</h1>
+<table class="table display" id="tableSugerenciaCuidado">
+    <thead>
+        <tr>
+            <th>Fecha y Hora</th>
+            <th>Descripción</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Historia.Sugerencias != null){
+            @foreach (var sugerencia in Model.Historia.Sugerencias)
+            {
+                <tr>
+                    <td>@sugerencia.FechaHora</td>
+                    <td>@sugerencia.Descripcion</td>
+                    <td>
+                        <a class="btn btn-warning table-btn" asp-page="./AgregarActualizarSugerenciaCuidado/AddUpdateSugerenciaCuidado" asp-route-idHistoria="@Model.Historia.IdHistoria" asp-route-id="@sugerencia.IdSugerenciaCuidado">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-danger table-btn" asp-page="./BorrarSugerenciaCuidado/BorrarSugerenciaCuidado" asp-route-idHistoria="@Model.Historia.IdHistoria" asp-route-id="@sugerencia.IdSugerenciaCuidado">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+}
+else {
+    <div>
+        <a class="btn btn-outline-primary" asp-page="../HistoriaClinica/Index">Regresar</a>
+    </div>
+}

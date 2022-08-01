@@ -11,8 +11,8 @@
     <p>Cel: @Model.Medico.Telefono</p>
     <p>@Model.Medico.Genero</p>
     <p>@Model.Medico.Especialidad</p>
-    <a asp-page="../ActualizarMedico/UpdateMedico" asp-route-id="@Model.Medico.Id">Editar</a>
-    <a asp-page="../PacientesAsignados/PacientesAsignados" asp-route-id="@Model.Medico.Id">Lista de pacientes asignados</a>
-    @* <a asp-page="./BorrarMedico/DeleteMedico" asp-route-id="@Model.Medico.Id">Eliminar</a> *@
+    <a asp-page="../AgregarActualizarMedico/AddUpdateMedico" asp-route-id="@Model.Medico.IdMedico">Editar</a>
+    <a asp-page="../PacientesAsignados/PacientesAsignados" asp-route-id="@Model.Medico.IdMedico">Lista de pacientes asignados</a>
+    <a asp-page="../BorrarMedico/DeleteMedico" asp-route-id="@Model.Medico.IdMedico">Eliminar</a>
   </div>
 </div>

@@ -1,0 +1,46 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.SignosVitales.IndexModel
+@{
+}
+@if (Model.Paciente != null)
+{
+<div class="d-flex flex-column align-items-end">
+    <a class="btn btn-outline-primary" asp-page="./AgregarActualizarSignosVitales/AddUpdateSignosVitales" asp-route-idPaciente="@Model.Paciente.IdPaciente">Registrar nuevo signo</a>
+</div>
+<h1 class="title">Signos vitales @Model.Paciente.Nombre @Model.Paciente.Apellidos</h1>
+<table class="table display" id="tableSignosVitales">
+    <thead>
+        <tr>
+            <th>Fecha y Hora</th>
+            <th>Valor</th>
+            <th>Signo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Paciente.SignoVitales != null){
+            @foreach (var signoVital in Model.Paciente.SignoVitales)
+            {
+                <tr>
+                    <td>@signoVital.FechaHora</td>
+                    <td>@signoVital.Valor</td>
+                    <td>@signoVital.Signo</td>
+                    <td>
+                        <a class="btn btn-warning table-btn" asp-page="./AgregarActualizarSignosVitales/AddUpdateSignosVitales" asp-route-idPaciente="@Model.Paciente.IdPaciente" asp-route-id="@signoVital.IdSignoVital">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-danger table-btn" asp-page="./BorrarSignosVitales/DeleteSignosVitales" asp-route-idPaciente="@Model.Paciente.IdPaciente" asp-route-id="@signoVital.IdSignoVital">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+}
+else {
+    <div>
+        <a class="btn btn-outline-primary" asp-page="../Pacientes/Index">Regresar</a>
+    </div>
+}

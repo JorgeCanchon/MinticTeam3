@@ -1,0 +1,42 @@
+@page
+@model HospiEnCasa.App.Web.Pages.Enfermeras.IndexModel
+@{
+}
+<div class="d-flex flex-column align-items-end">
+    <a class="btn btn-outline-primary" asp-page="./AgregarActualizarEnfermera/AddUpdateEnfermera">Registrar nueva enfermera</a>
+</div>
+<h1 class="title">Enfermera</h1>
+<table class="table display" id="tableEnfermera">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Teléfono</th>
+            <th>Género</th>
+            <th>Tarjeta Profesional</th>
+            <th>Horas Laborales</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var enfermera in Model.Enfermeras)
+        {
+            <tr>
+                <td>@enfermera.Nombre</td>
+                <td>@enfermera.Apellidos</td>
+                <td>@enfermera.Telefono</td>
+                <td>@enfermera.Genero</td>
+                <td>@enfermera.TarjetaProfesional</td>
+                <td>@enfermera.HorasLaborales</td>
+                <td>
+                    <a class="btn btn-warning table-btn" asp-page="./AgregarActualizarEnfermera/AddUpdateEnfermera" asp-route-id="@enfermera.IdEnfermera">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-danger table-btn" asp-page="./BorrarEnfermera/DeleteEnfermera" asp-route-id="@enfermera.IdEnfermera">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

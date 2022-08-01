@@ -12,8 +12,9 @@ namespace HospiEnCasa.App.Persistencia
         IQueryable<T> FindAll();
         T FindById(int id);
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
+        T FindByConditionSingle(Expression<Func<T, bool>> expression);
         T Create(T entity);
         T Update(T entity);
-        bool Delete(T entity);
+        T Delete(int id);
     }
 }

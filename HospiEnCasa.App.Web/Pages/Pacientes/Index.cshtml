@@ -3,7 +3,7 @@
 @{
 }
 <div class="d-flex flex-column align-items-end">
-  <a class="btn btn-outline-primary" asp-page="./RegistrarPaciente/AddPaciente">Registrar nuevo paciente</a>
+  <a class="btn btn-outline-primary" asp-page="./AgregarActualizarPaciente/AddUpdatePaciente">Registrar nuevo paciente</a>
 </div>
 <h1 class="title">Pacientes</h1>
 <div class="container">
@@ -16,7 +16,7 @@
       <p>@paciente.Genero</p>
       <span>
         <a class="hyperspan" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 1;"
-        asp-page="./ObtenerPaciente/ObtenerPaciente" asp-route-id="@paciente.Id"></a>
+        asp-page="./ObtenerPaciente/ObtenerPaciente" asp-route-id="@paciente.IdPaciente"></a>
       </span>
     </div>
   }

@@ -1,0 +1,43 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.AddUpdateSignosVitalesModel
+@{
+  <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
+}
+<div class="containerForm">
+  <div class="title">@ViewData["TitlePage"]</div>
+  <div class="content">
+    <div class="row">
+      <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" for="nombre">Fecha y Hora</span>
+          <input type="hidden" id="id" asp-for="SignoVital.IdSignoVital" />
+          <input type="hidden" id="idPaciente" asp-for="SignoVital.IdPaciente" />
+          <input type="datetime-local" id="fechaHora" asp-for="SignoVital.FechaHora" placeholder="Ingrese fecha hora" />
+          <span class="text-danger" asp-validation-for="SignoVital.FechaHora"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="valorSigno">Valor</span>
+          <input type="number" id="valorSigno" asp-for="SignoVital.Valor" placeholder="Ingrese valor">
+          <span class="text-danger" asp-validation-for="SignoVital.Valor"></span>
+        </div>
+        <div class="input-box">
+          <span class="details" for="signo">Signo</span>
+          <select class="details" asp-for="SignoVital.Signo">
+            <option value="1">Tension Arterial</option>
+            <option value="2">Frecuencia Cardiaca</option>
+            <option value="3">Frecuencia Respiratoria</option>
+            <option value="4">Saturacion Oxigeno</option>
+            <option value="5">Temperatura Corporal</option>
+          </select>
+          <span class="text-danger" asp-validation-for="SignoVital.Signo"></span>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Enviar">
+      </div>
+    </form>
+  </div>
+</div>

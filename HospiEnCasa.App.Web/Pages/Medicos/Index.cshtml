@@ -4,7 +4,7 @@
 }
 
 <div class="d-flex flex-column align-items-end">
-    <a class="btn btn-outline-primary" asp-page="./RegistrarMedico/AddMedico">Registrar nuevo medico</a>
+    <a class="btn btn-outline-primary" asp-page="./AgregarActualizarMedico/AddUpdateMedico">Registrar nuevo medico</a>
 </div>
 <h1 class="title">Medicos</h1>
 
@@ -18,7 +18,7 @@
     <p>@medico.Genero</p>
     <p>@medico.Especialidad</p>
     <span>
-      <a class="hyperspan" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 1;" asp-page="./ObtenerMedico/ObtenerMedico" asp-route-id="@medico.Id"></a>
+      <a class="hyperspan" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 1;" asp-page="./ObtenerMedico/ObtenerMedico" asp-route-id="@medico.IdMedico"></a>
     </span>
   </div>
 }

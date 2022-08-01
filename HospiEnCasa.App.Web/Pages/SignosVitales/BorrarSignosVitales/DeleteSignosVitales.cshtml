@@ -1,0 +1,26 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.DeleteSignosVitalesModel
+@{
+}
+<div class="container">
+    <div class="row">
+        <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <div class="row">
+        <div class="col-md-3 m-3">
+            <legend>Confirmar Eliminación</legend>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.SignoVital.Signo</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Model.SignoVital.Signo</h6>
+                    <p class="card-text">¿Esta seguro de eliminar este signo vital? </p>
+                    <div>
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

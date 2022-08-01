@@ -8,4 +8,22 @@ $(document).ready(function () {
             "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
         }
     });
+    
+    $('#tableSignosVitales').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        }
+    });
+
+    $('#tableHistoriaClinica').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        }
+    });
+
+    $('#tableSugerenciaCuidado').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        }
+    });
 });

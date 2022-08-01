@@ -1,0 +1,33 @@
+﻿@page
+@model HospiEnCasa.App.Web.Pages.AddUpdateHistoriaClinicaModel
+@{
+  <link href="~/css/forms.css" rel="stylesheet" type="text/css" />
+}
+<div class="containerForm">
+  <div class="title">@ViewData["TitlePage"]</div>
+  <div class="content">
+    <div class="row">
+      <p class="text-danger">@Model.ErrorMessage</p>
+    </div>
+    <form method="post">
+      <div class="user-details">
+        <div class="input-box">
+            <span class="details" for="nombre">Entorno</span>
+            <input type="hidden" id="id" asp-for="Historia.IdHistoria" />
+            <input type="text" id="entorno" asp-for="Historia.Entorno" placeholder="Ingrese entorno" />
+            <span clas="text-danger" asp-validation-for="Historia.Entorno"></span>
+        </div>
+        </div>
+        <div class="user-details">
+        <div class="input-box">
+            <span class="details" for="nombre">Diagnostico</span>
+            <textarea asp-for="Historia.Diagnostico"></textarea>
+            <span clas="text-danger" asp-validation-for="Historia.Diagnostico"></span>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Enviar">
+      </div>
+    </form>
+  </div>
+</div>

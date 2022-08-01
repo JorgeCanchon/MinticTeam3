@@ -10,6 +10,7 @@ namespace HospiEnCasa.App.Web.Pages
     {
         private readonly IRepositorioFamiliarDesignado _repositorioFamiliarDesignado;
         public string ErrorMessage { get; set; }
+        [BindProperty]
         public Dominio.FamiliarDesignado Familiar { get; set; } 
 
         public DeleteFamiliarDesignadoModel(IRepositorioFamiliarDesignado repositorioFamiliarDesignado)
@@ -17,35 +18,35 @@ namespace HospiEnCasa.App.Web.Pages
             _repositorioFamiliarDesignado = repositorioFamiliarDesignado ?? throw new ArgumentNullException(nameof(repositorioFamiliarDesignado));
         }
 
-        public void OnGet(int id)
+        public IActionResult OnGet(int id)
         {
-            
             Familiar = _repositorioFamiliarDesignado.FindById(id);
+
+            if(Familiar == null)
+            {
+                return RedirectToPage("/FamiliarDesignado/Index");
+            }
+
+            return Page();
         }
 
-        public ActionResult OnPost(int id)
+        public IActionResult OnPost(int id)
         {
             try
             {
-                if(id > 0)
-                {
-                    Familiar = _repositorioFamiliarDesignado.FindById(id);
-                    if(Familiar != null){
-                        var entity = _repositorioFamiliarDesignado.Delete(Familiar);
-                        if(entity);
-                            return RedirectToPage("/FamiliarDesignado/Index");
-                    }
-
-                    ErrorMessage = "No se pudo eliminar el familiar";
-                    return Page();
+                if(Familiar != null){
+                    _repositorioFamiliarDesignado.Delete(id);
+                    return RedirectToPage("/FamiliarDesignado/Index");
                 }
+
+                ErrorMessage = "No se pudo eliminar el familiar";
+                return Page();
 
                 ErrorMessage = "Id invalido por favor intente de nuevo";
 
             }catch(Exception exception){
                 ErrorMessage = "Error " + exception.Message;
             }
-
         
            return Page();
         }
